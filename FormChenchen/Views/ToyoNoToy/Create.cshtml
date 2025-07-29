@@ -1,0 +1,421 @@
+﻿@model FormChenchen.Models.FormularioClass
+@{  
+    if (TempData["SuccessMessage"] != null)
+    {
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">MENSAJE</h5>
+                    </div>
+                    <div class="modal-body">
+                        @TempData["SuccessMessage"]
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+ 
+ 
+       var mensajeError = TempData["MensajeError"] as string;
+ 
+
+         if (!string.IsNullOrEmpty(mensajeError))
+        {
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    mostrarToast("@mensajeError");
+                });
+            </script>
+        }
+
+}
+
+ 
+
+<div class="form-container">
+    
+    <form asp-controller="ToyoNotoy" asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()  
+
+         <h5 class="mt-4">Etapa del negocio</h5>
+        <label class="form-text" >Seleccione la etapa en la que se encuentra su negocio:</label>
+        <div class="form-group"> 
+            <select class="form-select" id="TipoFormulario" name="TipoFormulario" asp-for="TipoFormulario">
+                <option selected disabled value="">Seleccione una opción</option>
+                <option value="Emprendimiento">Emprendimiento</option>
+                <option value="Negocio existente">Negocio existente</option>
+            </select>
+        </div>
+        <section id="Emprendedor" >
+            <label class="form-text" style="color: #bf4c33">Persona natural o jurídica con menos de 24 meses de operaciones.</label>
+            <br />
+        </section>
+        <section id="Negocio">
+            <label class="form-text" style="color: #bf4c33">Persona natural o jurídica con 24 meses o más de operaciones.</label>
+            <br />
+        </section>
+
+        <!-- ********************************************************************************************** -->
+        <!-- *     Este bloque pertenece a los datos del negocio asociado a la tabla  Contacto           * -->
+        <!-- ********************************************************************************************** -->
+
+        <section id="Conctact">
+
+            <h5 class="mt-4" id="encab1">Datos de Contacto</h5>
+            <label class="form-text">Los datos solicitados son de la persona de Contacto.</label>
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <label for="Nombre" class="form-label" style="width: 100%;">* Nombre</label>
+                    <input asp-for="Contact.Nombre"  type="text" class="form-control" placeholder="Nombre" style="width: 100%;" required>
+                    <span asp-validation-for="Contact.Nombre" class="text-danger" style="font-size: 14px"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Apellido" class="form-label" style="width: 100%;">* Apellido</label>
+                    <input asp-for="Contact.Apellido"  type="text" class="form-control" placeholder="Apellido" style="width: 100%;" required>
+                    <span asp-validation-for="Contact.Apellido" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Contact.IdentificationType" class="form-label">* Tipo de Identificación</label>
+                       <div class="select-container">
+                        <select asp-for="Contact.IdentificationType"  id="IdentificationType" class="form-select" required>
+                                <option selected disabled value="">Seleccione una opción</option>
+                                <option value="Cedula">Cédula</option>
+                                <option value="Pasaporte">Pasaporte</option>
+                            </select>
+						<span asp-validation-for="Contact.IdentificationType" class="text-danger" style="font-size: 14px"></span>
+                      </div>
+                            
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Contact.IdentificationNumber" class="form-label">* N.º de identificación</label>
+                    <input asp-for="Contact.IdentificationNumber"  type="text" class="form-control" placeholder="Ej: 0-0000-0000" required>
+                    <span asp-validation-for="Contact.IdentificationNumber" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Contact.Email" class="form-label">* Correo Electrónico</label>
+                    <input asp-for="Contact.Email"   type="email" class="form-control" placeholder="Ej: usuario@email.com" required>
+                    <span asp-validation-for="Contact.Email" class="text-danger" style="font-size: 14px"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+
+                    <label asp-for="Contact.Phone" class="form-label">* Teléfono celular (whatsapp)</label>
+                    <div class="input-group">
+                        <span class="group-text">+507</span>
+                        <input asp-for="Contact.Phone"  id="phoneNumber" type="text" class="form-control" maxlength="9" placeholder="0000-0000" required>
+                    </div> 
+                    <span asp-validation-for="Contact.Phone" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+         <h5 class="mt-4">Datos del Negocio</h5>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                        <label asp-for="Enterprise.BusinessName" class="form-label">* Nombre del negocio</label>
+                        <input asp-for="Enterprise.BusinessName"  type="text" class="form-control" id="BusinessName" required> 
+                        <span asp-validation-for="Enterprise.BusinessName" class="text-danger" style="font-size: 14px"></span>
+                 </div>
+
+           
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Enterprise.EconomicActivity" class="form-label" style="width: 100%;">* Actividad económica</label>
+                    <select asp-for="Enterprise.EconomicActivity"  class="form-select" id="EconomicActivity" style="width: 100%;" required>
+                        <option selected disabled value="">Seleccione una opción</option> 
+                        <option value="Automotriz">Automotriz</option>
+                        <option value="Construcción">Construcción</option>
+                        <option value="Comercio">Comercio</option>
+                        <option value="Cultura y recreación">Cultura y recreación</option>
+                        <option value="Educación">Educación</option>
+                        <option value="Energía">Energía</option> 
+                        <option value="Investigación y desarrollo">Investigación y desarrollo</option>
+                        <option value="Industria Manufacturera">Industria Manufacturera</option>
+                        <option value="Industria No Manufacturera">Industria No Manufacturera</option> 
+                        <option value="Salud">Salud</option>
+                        <option value="Servicios">Servicios</option>
+                        <option value="Servicios Financieros">Servicios Financieros</option>
+                        <option value="Tecnología de la información">Tecnología de la información</option>
+                        <option value="Textiles">Textiles</option>
+                        <option value="Transportes">Transportes</option>
+                        <option value="Turismo">Turismo</option>
+                        <option value="Zona Libre">Zona Libre</option>
+                        <option value="Otros">Otros</option>
+                    </select> 
+                    <span asp-validation-for="Enterprise.EconomicActivity" class="text-danger" style="font-size: 14px"></span>
+                    <div class="col-md-6 mb-3" id="EconomicActivityOther" style="display:none; width: 100%;">
+                        <input type="text" id="EconomicActivityOther" class="form-control" placeholder="Especifique otra actividad" />
+                    </div>
+                </div>
+               
+            </div>
+         </section>
+        <!-- ******************************************************************************************************************** -->
+        <!-- *     Este bloque pertenece a los datos del negocio asociado a la tabla  Enterprises  OPCION EMPERNDIMIENTO        * -->
+        <!-- ********************************************************************************************************************* -->
+
+            <section id="EnterprisesEmpre">
+               
+            <div class="row mb-3">
+                 <div class="col-md-6 mb-3">
+
+                    <label for="ProyectedSales" class="form-label" style="width: 100%; ">* Proyección de ventas mensuales</label>
+                    <input asp-for="Enterprise.ProyectedSales" type="text" class="form-control" id="ProyectedSales" style="width: 100%;" requiered placeholder="$" > 
+                    <span asp-validation-for="Enterprise.ProyectedSales" class="text-danger" style="font-size: 14px"></span>
+
+                </div>
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.Enterprise.WebSite, htmlAttributes: new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Enterprise.WebSite, new { @class = "form-control", placeholder = "https://www.ejemplo.com" })
+                    <span asp-validation-for="Enterprise.WebSite" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3"> 
+                        <label for="BusinessTime" class="form-label" style="width: 100%;">* Tiempo de emprendimiento</label>
+
+                        <div class="select-container">
+                            <select asp-for="Enterprise.BusinessTime"  id="BusinessTime" class="form-select" required>
+                                <option selected disabled value="">Seleccione una opción</option>
+                                <option value="Menor a 1 año">Menor a 1 año</option>
+                                <option value="De 1 a 2 Años">De 1 a 2 Años</option>
+                            </select>
+ 					     	<span asp-validation-for="Enterprise.BusinessTime" class="text-danger" style="font-size: 14px"></span>
+                        </div>
+
+				</div>
+
+
+                  <div class="col-md-6 mb-3">
+                    @Html.LabelFor(m => m.Enterprise.Instagram, new { @class = "form-label"  })
+                    @Html.TextBoxFor(m => m.Enterprise.Instagram, new { @class = "form-control", placeholder = "Cuenta de Instagram" })
+                    <span asp-validation-for="Enterprise.Instagram" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="BusinessDescription" class="form-label">* Describe tu idea de negocio</label>
+                <textarea asp-for="Enterprise.BusinessDescription"   class="form-control h4 ng-pristine ng-invalid ng-touched" id="BusinessDescription" placeholder="Descripción breve..." required></textarea>
+                <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
+
+            </div>
+
+        </section>
+        <!-- ******************************************************************************************************************** -->
+        <!-- *    Este bloque pertenece a los datos del negocio asociado a la tabla  Enterprises  OPCION NEGOCIO EXISTENTE      * -->
+        <!-- ******************************************************************************************************************** -->
+        <section id="EnterprisesNegoc">
+          
+            <div class="row mb-3">
+
+                <div class="col-md-6 mb-3">
+                    <label for="RucEmpresa" class="form-label bg-white custom-label" style="width: 100%;">RUC</label>
+                    <input for="Enterprise.RucEmpresa"   type="text" class="form-control ng-pristine ng-valid ng-touched" id="RucEmpresa" required>
+                    <span asp-validation-for="Enterprise.RucEmpresa" class="text-danger" style="font-size: 14px"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="DvEmpresa" class="form-label" style="width: 100%;">DV</label>
+                    <input for="Enterprise.DvEmpresa"  type="number" class="form-control" maxlength="4" size="4" id="DvEmpresa" required>
+                    <span asp-validation-for="Enterprise.DvEmpresa" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            
+             </div>
+
+            <div class="row mb-3">
+                
+                <div class="col-md-6 mb-3">
+                    <label for="OperationsStartDate" class="form-label" style="width: 100%;">* Fecha de Inicio de Operaciones</label>
+                    <input asp-for="Enterprise.OperationsStartDate"   class="form-control" id="OperationsStartDate" style="width: 100%;" type="date" placeholder="dd/mm/aaaa" required>
+                    <span asp-validation-for="Enterprise.OperationsStartDate" class="text-danger" style="font-size: 14px"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="MonthlySales" class="form-label" style="width: 100%;">* Ventas mensuales</label>
+                    <input asp-for="Enterprise.MonthlySales"  type="text" class="form-control" id="MonthlySales" placeholder="$" style="width: 100%;" required  >
+                    <span asp-validation-for="Enterprise.MonthlySales" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Enterprise.WebSite" class="form-label">Sitio web de la empresa</label>
+                <input asp-for="Enterprise.WebSite" type="text" class="form-control"  placeholder="https://www.ejemplo.com">
+                <span asp-validation-for="Enterprise.WebSite" class="text-danger" style="font-size: 14px"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Enterprise.Instagram" class="form-label" style="width: 100%;">Instagram</label>
+                <input asp-for="Enterprise.Instagram"  type="text" class="form-control"  placeholder="Cuenta de Instagram">
+                <span asp-validation-for="Enterprise.Instagram" class="text-danger" style="font-size: 14px"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="BusinessDescription" class="form-label">* Describe tu idea de negocio</label>
+                <textarea asp-for="Enterprise.BusinessDescription"  class="form-control h4 ng-pristine ng-invalid ng-touched" id="BusinessDescription" placeholder="Descripción breve..." required></textarea>
+                <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
+            </div>
+        </section>
+
+
+
+
+        <!-- ********************************************************************************************** -->
+        <!-- *     Este bloque pertenece a los datos del negocio asociado a la tabla  [RequestDetails]    * -->
+        <!-- ********************************************************************************************** -->
+        <section id="Details">
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">* Provincia</label>
+                    <div class="select-container">
+                        <select asp-for="Enterprise.Province"  class="form-select" id="provincia" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                        <span asp-validation-for="Enterprise.Province" class="text-danger" style="font-size: 14px"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">* Distrito</label>
+                    <select asp-for="Enterprise.District"  class="form-select" id="distrito" required>
+                        <option selected disabled value="">Seleccione una opción</option>
+                    </select>
+                    <span asp-validation-for="Enterprise.District" class="text-danger" style="font-size: 14px"></span>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">* Corregimiento</label>
+                    <select asp-for="Enterprise.Corregimiento"  class="form-select" id="corregimiento" required>
+                        <option selected disabled value="">Seleccione una opción</option>
+                    </select>
+                    <span asp-validation-for="Enterprise.Corregimiento" class="text-danger" style="font-size: 14px"></span>
+                </div>
+            </div>
+
+            <h5 class="mt-4">Datos de la Solicitud</h5>
+            <div class="mb-3">
+                <label for="QuantityToInvert" class="form-label">* ¿Cuánto Chen Chen necesitas?</label>
+                <input asp-for="RequestDetail.QuantityToInvert" type="text" class="form-control" id="QuantityToInvert" required placeholder="$">
+                <span asp-validation-for="RequestDetail.QuantityToInvert" class="text-danger" style="font-size: 14px"></span>
+            </div>
+            <div class="mb-3">
+                <label for="ReasonForMoney" class="form-label">* ¿En qué lo invertirás?</label>
+                <textarea asp-for="RequestDetail.ReasonForMoney"    type="text" class="form-control" id="ReasonForMoney" required></textarea>
+                <span asp-validation-for="RequestDetail.ReasonForMoney" class="text-danger" style="font-size: 14px"></span>
+            </div>
+
+        </section>
+
+        <!-- ********************************************************************************************** -->
+        <!-- *                                   ejecuta en envio                                         * -->
+        <!-- ********************************************************************************************** -->
+        <section id="envio">
+            <div class="mb-3">
+                <input type="checkbox" id="termsCheckbox">
+                <label for="termsCheckbox"> Acepto los términos y condiciones</label>
+                <br><br>
+                <button type="button" class="col position-relative col-12 my-3 d-flex justify-content-center align-items-center custom-button" id="openModal">
+                    Enviar Solicitud
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmationModalLabel">Confirmar envío</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de que deseas enviar esta solicitud?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="closeModal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" id="confirmButton">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Bootstrap -->
+        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                        <button type="button" class="close btn btn-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
+                    </div>
+                    <div class="modal-body" style="text-align: left;">
+                        <p class="text-bold-spacing" style="font-size: 18px">Al completar este formulario acepta lo siguiente:</p>
+
+                        <p class="text-bold-spacing" style="font-size: 15px">Autorizo(amos) a Caja de Ahorros y a la Autoridad de la Micro, Pequeña y Mediana Empresa (AMPYME) a:</p>
+
+                        <p class="text-bold-spacing" style="font-size: 15px">- Consentimiento para el tratamiento de datos personales</p>
+
+                        <p style="font-size: 14px">
+                            Otorgamos consentimiento de manera libre, expresa, precisa, previa, informada e inequívoca para el tratamiento de nuestros datos personales.
+                            Dicho tratamiento abarca todas las operaciones contenidas en el literal 20 del artículo 4 y 6 de la Ley 81 de 2019.
+                            El otorgante del presente consentimiento y autorización reconoce que podrá ejercer en cualquier momento los Derechos ARCOP,
+                            de conformidad con lo establecido en la Ley 81 de 2019, el Decreto Ejecutivo No. 285 de 2021 y el Acuerdo No. 1-2022 de la Superintendencia de Bancos de Panamá,
+                            todos referentes a la Protección de Datos Personales.
+                        </p>
+
+                        <p class="text-bold-spacing" style="font-size: 15px">- Veracidad de Información</p>
+
+                        <p style="font-size: 14px">
+                            Declaro (amos) bajo gravedad de juramento que la información suministrada es correcta, verdadera y se ajusta estrictamente a la realidad,
+                            y que ha sido otorgada con el objeto de participar en la convocatoria del programa.
+                            Cualquier omisión de la información aportada estará sujeta a la aplicación del procedimiento y reglamento correspondiente,
+                            entendiendo que podrán dar por terminada nuestra participación inmediata en el programa.
+                        </p>
+
+                        <p class="text-bold-spacing" style="font-size: 15px">- Autorización para consultar referencias de crédito</p>
+
+                        <p style="font-size: 14px">
+                            De igual manera, autorizo(amos) expresamente a consultar mis (nuestras) referencias de crédito.
+                        </p>
+
+                        <p class="text-bold-spacing" style="font-size: 15px">- Consentimiento para comunicaciones de carácter publicitario</p>
+
+                        <p style="font-size: 14px">
+                            Por este medio, otorgo(amos) nuestro consentimiento para recibir comunicaciones de carácter publicitario, comercial o de mercadeo
+                            sobre productos y servicios bancarios a través de los medios de comunicación facilitados previamente.
+                            Asimismo, acepto(amos) que la información proporcionada pueda ser utilizada para la realización de encuestas y estudios
+                            con el fin de mejorar la calidad de los servicios y productos bancarios.
+                            El otorgante del presente consentimiento y autorización reconoce que podrá ejercer en cualquier momento los Derechos ARCOP,
+                            de conformidad con lo establecido en la Ley 81 de 2019, el Decreto Ejecutivo No. 285 de 2021 y el Acuerdo No. 1-2022 de la Superintendencia de Bancos de Panamá,
+                            todos referentes a la Protección de Datos Personales.
+                        </p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success bg-green" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>  
+
+ 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+}
+
+ 
+ 

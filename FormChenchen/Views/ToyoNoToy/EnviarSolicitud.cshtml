@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Envío de Solicitud";
+}
+
+<div class="form-cont" id="envioreq">
+    <h5 class="fw-bold">¡El chen chen ya está más cerca de ti!</h5>
+    <p>Tu solicitud ha sido registrada con éxito con el siguiente código:</p>
+    <p class="code">@ViewBag.Codigo</p>
+    <p>Esta información ha sido enviada a su número de WhatsApp</p>
+
+    <p>
+        <a href="https://wa.me/@ViewBag.Phone" class="whatsapp-number">
+            @ViewBag.Phone
+        </a>
+    </p>
+
+    <p>Muy pronto nuestro equipo se pondrá en contacto</p>
+
+    <button type="button" class="btn btn-secondary w-100 mt-3"
+            onclick="location.href='@Url.Action("Create")'">
+        Crear nueva solicitud
+    </button>
+</div>

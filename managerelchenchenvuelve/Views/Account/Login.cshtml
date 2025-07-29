@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ElChenVuelve</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <strong>Dashboard de Formularios</strong>
+            <div class="logo">
+                <img src="~/img/logo.png" alt="Logo">
+            </div>
+            
+            <form asp-controller="Account" asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
+                <div class="input-box">
+                    <input class="form-control" style="opacity: 1.0" type="text" placeholder="Usuario" required name="username" />
+                </div>
+                <div class="input-box">
+                    <input class="form-control" type="password" placeholder="Contraseña" required name="password" />
+                </div>
+                <div class="text-end mb-3">
+                    <a href="#" class="text-light text-decoration-none">Olvidaste tu Contraseña ?</a>
+                </div>
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-primary btn-lg" type="submit">Iniciar Sesión</button>
+                </div>
+
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+
+
+            </form>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

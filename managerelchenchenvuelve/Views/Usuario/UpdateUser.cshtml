@@ -1,0 +1,104 @@
+@model managerelchenchenvuelve.Models.Useres
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Actualizar Usuario";
+    var roles   = ViewBag.Roles as List<managerelchenchenvuelve.Models.Role>;
+    var company = ViewBag.Compania as List<managerelchenchenvuelve.Models.Company>;
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Actualizar Usuario</h2>
+        
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="UpdateUser" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="UserName" />
+                <input type="hidden" asp-for="Names" />
+                <input type="hidden" asp-for="Lastname" />
+                <input type="hidden" asp-for="PhoneNumber" />
+             
+               
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Usuario</label>
+                        <input value="@Model.UserName" class="form-control" disabled />
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label">Correo Electrónico</label>
+                        <input asp-for="Email" name="Email"  class="form-control" type="email" maxlength="256" value="@Model.Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="PasswordHash" class="form-label">Nueva Contraseña</label>
+                        <input asp-for="PasswordHash" name="PasswordHash" class="form-control" type="password" minlength="6" />
+                        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                        <small class="form-text text-muted">Dejar en blanco si no desea cambiar la contraseña</small>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Rol</label>
+                        <select name="RoleId" class="form-select" required>
+                            <option selected disabled value="">Seleccione un rol</option>
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Id" @(ViewBag.CurrentRoleId == role.Id ? "selected" : "")>@role.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+
+                    <div class="col-md-6 mb-3">
+                          <label asp-for="Gestion" class="form-label">Compañia</label>
+                          <select asp-for="Gestion" name="Gestion" class="form-select" required>
+                            <option selected disabled value="">Seleccione un rol</option>
+                            @foreach (var companies in company)
+                            {
+                                <option value="@companies.Codigo" @(ViewBag.userCompania == companies.Codigo ? "selected" : "")>@companies.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-check form-switch">
+                            <br />
+                            <div class="form-check form-switch"> 
+                                <input class="form-check-input" type="checkbox" id="statusSwitch" name="IndUpdate" value="True" @(Model.IndUpdate ? "checked" : "") />
+                                <label class="form-check-label" for="statusSwitch">¿Actualizar automáticamente?</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} 

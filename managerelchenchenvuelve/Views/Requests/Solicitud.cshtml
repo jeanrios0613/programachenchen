@@ -1,0 +1,423 @@
+﻿@model managerelchenchenvuelve.Models.RequestInfo
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "solicitud";
+    bool puedeEditar  =   ViewBag.AdminUser == "ADMINISTRADOR" ||
+                          ViewBag.AdminUser == "APROBACIÓN AMPYME" ||
+                          ViewBag.AdminUser == "APROBACIÓN CA";
+ 
+}
+
+ 
+     
+
+        <div class="d-flex justify-content-between mb-3">
+            <h4>Solicitud Nro.: @Html.DisplayFor(model => model.CodigoDeSolicitud)</h4>
+            <button class="btn btn-outline-primary" onclick="location.href='@Url.Action("SubirArchivo","Archivos", new { ProcessId = Model.CodigoDeSolicitud })'">Agregar Información</button>
+        </div>
+
+        <form action="@Url.Action("Solicitud", "Requests")" method="post">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <!--HIDDEN VALUE-->
+            <input type="hidden" name="CodigoDeSolicitud"    id="CodigoDeSolicitud" value="@Model.CodigoDeSolicitud" />
+            <input type="hidden" name="Gestor" id="Gestor"   value="@Model.Gestor" />
+            <input type="hidden" name="Etapa"  id="Etapa"    value="@Model.Etapa" />
+            <!--HIDDEN VALUE-->
+               
+
+            <div class="row">
+                <!-- Datos Generales -->
+                <div class="col-md-8">
+                    <div class="card-custom mb-4">
+                        <h6 class="mb-3">Datos Generales</h6>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Código De Solicitud Chen Chen</label>
+                                <div class="info-box" style="min-height: 40px"><spam>@Html.DisplayFor(model => model.CodigoDeSolicitud)</spam></div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Fecha De Creación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.FechaDeCreacion)</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Recomendación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Gestor)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Etapa Del Negocio</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.EtapaDelNegocio)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Datos De Contacto -->
+                    <div class="card-custom mb-4">
+
+                       <h6 class="mb-3">Datos De Contacto</h6>
+                       <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Tipo de identificación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Nombre)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Número de identificación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Apellido)</div>
+                             </div>
+                       </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Tipo de identificación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.TipoIdentificacion)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Número de identificación</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.NumeroIdentificacion)</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Correo Electronico</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.CorreoElectronico)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Teléfono</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Telefono)</div>
+                            </div>
+                        </div>
+                    </div>
+
+               
+                    <!-- Datos De Contacto -->
+                    <div class="card-custom mb-4">
+
+                        <h6 class="mb-3">Datos del Negocio</h6>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Nombre del Negocio</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.NombreNegocio)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Actividad económica</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.ActividadEconomica)</div>
+                            </div>
+                        </div>
+                    
+                    @if (Model.EtapaDelNegocio == "Emprendimiento")
+                    {
+                               <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="label-muted">Proyección de ventas mensuales</label>
+                                        <div id="ProyectedSales" class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.ProyeccionVentasMensuales)</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="label-muted">Actividad económica</label>
+                                        <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.ActividadEconomica)</div>
+                                    </div>
+                            </div>
+                      }
+
+                    @if (Model.EtapaDelNegocio == "Negocio existente")
+                    {
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="label-muted">Fecha de Inicio de Operaciones</label>
+                                        <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.FechaInicioOperaciones)</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="label-muted">Ventas mensuales</label>
+                                        <div id="MonthlySales" class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.VentasMensuales)</div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="label-muted">RUC</label>
+                                        <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Ruc)</div>
+                                    </div>
+                                    
+                                </div>
+                          }
+
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="label-muted">Web Site</label>
+                                    <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.WebSite)</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="label-muted">Instagram</label>
+                                    <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Instagram)</div>
+                                </div>
+                            </div>
+
+                        <div class="col-md-12">
+                            <label class="label-muted">Descripción del negocio</label>
+                            <textarea class="form-control" rows="4" disabled readonly>@Html.DisplayFor(model => model.DescripcionNegocio)</textarea>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Provincia</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Provincia)</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Distrito</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Distrito)</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">corregimiento</label>
+                                <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Corregimiento)</div>
+                            </div>
+                        </div>
+                    </div>
+               
+                
+                    <!-- Datos De Contacto -->
+                    
+
+                    <div class="card-custom mb-4">
+                        <h6 class="mb-3">Detalles de la solicitud</h6>
+
+                        <div class="row mb-3">
+                            <label class="label-muted">¿Cuanto Chenchen necesitas?</label>
+                            <div id="QuantityToInvert" class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.CuantoChenchenNecesitas)</div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="label-muted">¿En qué lo invertirás?</label>
+                            <div class="info-box" style="min-min-height: 40px">@Html.DisplayFor(model => model.EnQueLoInvertiras)</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Gestión Realizada *</label>
+                                <select name="GestionRealizada" class="form-control" id="gestionreal" required @(Model.Etapa != "En Curso" ? "disabled" : "")>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="Por contactar" @(Model.GestionRealizada == "Por contactar" ? "selected" : "" )>Por contactar</option>
+                                    <option value="Atendido" @(Model.GestionRealizada == "Atendido" ? "selected" : "")>Atendido</option>
+                                    <option value="Llamada realizada sin exito" @(Model.GestionRealizada == "Llamada realizada sin exito" ? "selected" : "")>Llamada realizada sin éxito</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="label-muted">Verificación del Cliente *</label>
+                        <select name="VerificacionCliente" class="form-control" id="VerificacionCliente" required @(Model.Etapa != "En Curso" ? "disabled" : "")>
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="T0" @(Model.VerificacionCliente == "T0" ? "selected" : "")>T0</option>
+                                    <option value="T1" @(Model.VerificacionCliente == "T1" ? "selected" : "")>T1</option>
+                                    <option value="T2" @(Model.VerificacionCliente == "T2" ? "selected" : "")>T2</option>
+                                    <option value="T3" @(Model.VerificacionCliente == "T3" ? "selected" : "")>T3</option>
+                                    <option value="Fidemicro" @(Model.VerificacionCliente == "Fidemicro" ? "selected" : "")>Fidemicro</option>
+                                    <option value="No Precalificado" @(Model.VerificacionCliente == "No Precalificado" ? "selected" : "")>No Precalificado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <section id="razon" style="display: none;">
+                            <div>
+                                <label><strong>Razón</strong></label><br>
+                                <label>
+                                <input type="radio" name="PorqueNoContacto" id="PorqueNoContacto" value="número incorrecto"  @(Model.PorqueNoContacto == "número incorrecto" ? "checked" : "")>
+                                    Número Incorrecto
+                                </label><br>
+                                <label>
+                                <input type="radio" name="PorqueNoContacto" id="PorqueNoContacto" value="no atiende llamada" @(Model.PorqueNoContacto == "no atiende llamada" ? "checked" : "")>
+                                    No Atiende Llamada
+                                </label>
+                            </div>
+                        </section>
+                          
+                        <section id="atencion" style="display: none;">
+                            <div>
+                                <label><strong>Tipo de atencion</strong></label><br>
+                                <label>
+                                <input type="radio" name="TipoAtencion" id="TipoAtencion"  value="contactado" @(Model.TipoAtencion == "contactado" ? "checked" : "")>
+                                    Contactado
+                                </label><br>
+                                <label>
+                                <input type="radio" name="TipoAtencion" id="TipoAtencion"  value="Atendido en Sitio" @(Model.TipoAtencion == "Atendido en Sitio" ? "checked" : "")>
+                                    Atendido en Sitio
+                                </label>
+                            </div>
+                        </section>
+ 
+                        <section style="@(Model.Gestor == ViewBag.CompaniaUser ? "" : "display: none;")">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                        
+                        @if (ViewBag.nombreUsuario == Model.UsuarioAsignado)
+                        {
+                                <section id="to-pass" style="@(Model.Etapa == "En Curso" ? "" : "display: none;")">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="showCommentModal('Solicitud de Cambio', 'ChangeRequest')"> Solicitud de Cambio </button>
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="$('#approvalModal').modal('show')">Aprobar</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="showCancelModal()">Cancelar</button>
+                                </section>
+
+                        }
+
+                        @if (puedeEditar || Model.UsuarioAsignado.ToUpperInvariant() == ViewBag.nombreUsuario.ToUpperInvariant())
+                               {
+
+                            <section id="to-pass" style="@(Model.Etapa == "Solicitud de Cambio" ? "" : "display: none;") @(puedeEditar ? "" : "display: none;")">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="showCommentModal('Aprobar Cambio', 'AprovedChange')">Aprobar Cambio</button>
+                                </section>
+
+
+                            <section id="to-pass" style="@(Model.Etapa == "Re-Abrir Solicitud" ? "" : "display: none;") @(puedeEditar ? "" : "display: none;")">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="showCommentModal('Re-Abrir Solicitud', 'OpenRequest')">Confirma Solicitud</button>
+                                </section>
+                        }
+                                <section id="reopen" style="@(Model.Etapa == "Completada" ? "" : "display: none;") ">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="showCommentModal('Re-Aprobar', 'AprovedRequest')"> Re - Apertura </button>
+                                </section>
+                       
+                            </div>
+                       </section>
+                    
+                </div>
+                </div>
+
+
+                <!-- Panel Derecho -->
+                <div class="col-md-4">
+                    <div class="card-custom">
+                        <div class="mb-2">
+                            <strong>No. solicitud:</strong> @Html.DisplayFor(model => model.CodigoDeSolicitud)
+                        </div>
+                        <div class="mb-2">
+                            <strong>Tipo de solicitud:</strong><br> @Html.DisplayFor(model => model.Gestor)
+                        </div>
+                        <div class="mb-2">
+                            <strong>Fecha creación:</strong><br> @Html.DisplayFor(model => model.FechaDeCreacion)
+                        </div> 
+                        <div class="mb-2">
+                            <strong>Duración:</strong><br>  @Html.DisplayFor(model => model.TiempoTranscurrido)
+                        </div>
+                        <div class="form-group mb-3">
+                           <strong for="usuarioAsignadoSelect">Asignar usuario</strong>
+                            <select id="usuarioAsignadoSelect"
+                                    class="form-select form-select-sm"
+                                    aria-label="Seleccionar usuario asignado"
+                            @(puedeEditar ? "" : "disabled")>
+                                @foreach (var user in ViewBag.Usuarios)
+                                {
+                                    <option value="@user.UserName" @(user.UserName == Model.UsuarioAsignado ? "selected" : "")>
+                                        @user.UserName
+                                    </option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-2">
+                            <strong>Estado:</strong><br> <span class="badge badge-status" style="background-color: (@Html.DisplayFor(model => model.Etapa) == "Completada" ? "#006400" : "#2563eb" ); color: white;">
+                                @Html.DisplayFor(model => model.Etapa)
+                            </span>
+                        </div> 
+                        
+                    </div>
+                </div>
+            </div>
+
+         <!----------------------------------------------------------------Modal de Confirmación ------------------------------------------------------------->
+        <!-- Modal de Aprobación -->
+        <div id="approvalModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar Aprobación</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea aprobar esta solicitud?</p>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$('#approvalModal').modal('hide')">Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="submitForm()">Sí, Aprobar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal de Cancelación -->
+        <div id="confirmationModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar Cancelación</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de que desea cancelar la solicitud?</p>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index","Process")'">Sí</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Unificado de Comentarios -->
+        <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4 p-3">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title fw-bold" id="commentModalLabel">Confirmación de Decisión</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-3" id="commentModalMessage">¿Está seguro que desea realizar esta acción? No se puede deshacer</p>
+
+                        <div class="mb-3">
+                            <input type="hidden" id="commentType" value="" />
+                            <label for="commentText" class="form-label fw-semibold">Comentario</label>
+                            <textarea class="form-control" id="commentText" rows="4" placeholder="Agregue un comentario..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0 justify-content-end">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" onclick="submitComment('commentText', 'commentType')">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+        </form>
+
+<script>
+    document.getElementById('usuarioAsignadoSelect').addEventListener('change', function () {
+        var usuario = this.value;
+        var codigo = document.getElementById('CodigoDeSolicitud').value; // <- AQUÍ el .value
+
+        fetch('/Requests/UpdateUsuarioAsignado', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                // Puedes quitar RequestVerificationToken si no usas AntiForgeryToken
+            },
+            body: JSON.stringify({
+                codigoDeSolicitud: codigo,
+                usuarioAsignado: usuario
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    mostraralertModal('✅ Usuario actualizado correctamente.');
+                } else {
+                    mostraralertModal(data.message || '❌ No se pudo actualizar el usuario.');
+                }
+            })
+            .catch(error => {
+                mostrarErrorModal('⚠️ Error al actualizar usuario.');
+                console.error(error);
+            });
+    });
+</script>
+
+

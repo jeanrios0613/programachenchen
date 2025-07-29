@@ -1,0 +1,102 @@
+﻿@model IEnumerable<managerelchenchenvuelve.Models.Useres>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="card-custom">
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Lista de Usuarios</h2>
+
+        <div class="d-flex align-items-center gap-2">
+            <a href="@Url.Action("Create", "Usuario")" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Usuario
+            </a>
+            <input id="buscarUsuario" type="text" class="form-control" placeholder="Buscar" style="width: 300px; height: 40px;">
+        </div>
+    </div>
+     </br> 
+      <div class="scrollable-table-container">
+            <table class="table table-hover">
+                <thead class="table-light">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">@user.UserName</td>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">@user.Names</td>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">@user.Lastname</td>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">@user.Email</td>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">@user.PhoneNumber</td>
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif; ">
+                            @if (user.Status)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactivo</span>
+                            }
+
+                        </td>
+
+                        <td style="font-size: 12px; font-family: 'Arial', sans-serif;">
+                            <div class="btn-group" role="group" style="display: flex; gap: 5px;">
+                                <!-- Botón Editar -->
+                                <div class="form-label">
+                                    <a title="Editar" href="@Url.Action("UpdateUser", "Usuario", new { id = user.Id })" class="btn btn-sm btn-warning" style="width: 75px; text-align: center;">
+                                        <i class="fas fa-edit" style="font-size: 12px; font-family: 'Arial';">Editar</i>
+                                    </a>
+                                </div>
+
+                                <!-- Botón Habilitar/Inhabilitar -->
+                                <div class="form-label">
+                                    @using (Html.BeginForm("ToggleStatus", "Usuario", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("id", user.Id)
+                                        <button title="@(user.Status ? "Inhabilitar" : "Habilitar")" type="submit" class="btn btn-sm @(user.Status ? "btn-danger" : "btn-success")" style="width: 100px; text-align: center;">
+                                            <i class="fas @(user.Status ? "fa-trash" : "fa-check")" style="font-size: 12px; font-family: 'Arial';"></i> @(user.Status ? "Inhabilitar" : "Habilitar")
+                                        </button>
+                                    }
+                                </div>
+                                
+                                <!-- Botón Eliminar -->
+                                <div class="form-label">
+                                    @using (Html.BeginForm("DeleteUser", "Usuario", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("id", user.Id)
+                                        <button title="Eliminar" type="submit" class="btn btn-sm btn-outline-danger" style="width: 75px; text-align: center;">
+                                            <i class="fas fa-times" style="font-size: 12px; font-family: 'Arial';"></i> Eliminar
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                }  
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+
+ 

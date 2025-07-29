@@ -1,0 +1,139 @@
+﻿@using managerelchenchenvuelve.Models
+
+@{
+    Layout = "_Layout";
+    var listaComenta = ViewBag.DataComenta as List<Comment>;
+}
+ 
+
+   <div class="container">
+        <div class="d-flex justify-content-between mb-3">
+            <h4>Solicitud Nro.: @ViewBag.Id</h4>
+        </div>
+       
+     <div class="row">
+      <div class="col-md-6">
+        <div class="card-custom">
+           <div class="upload-box">
+
+                    <label class="lettertitle" >Cargar Archivos</label>
+                        <!-- Formulario para cargar archivo -->
+                    <form asp-action="SubirArchivo" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="ProcessId" value="@ViewBag.ProcessId" />
+                        @Html.AntiForgeryToken()
+                            <div class="file-size-info">
+                                Adjuntar archivo <strong>(máx. 5 MB):</strong>
+                            </div>
+                            <label class="custom-file-label" for="archivo">
+                                Seleccionar archivo
+                            </label>
+                            <input type="file" class="form-control" id="archivo" name="archivo" required onchange="previewFile()" />
+
+                            <button type="submit" class="submit-btn">Subir</button>
+
+                            <div id="filePreview" class="mt-3" style="display: none;">
+                            <div class="preview-container">
+                                <img id="previewImage" src="#" alt="Preview" style="max-width: 100px; max-height: 100px; display: none;" />
+                                <div id="fileName" class="mt-2"></div>
+                            </div>
+                            </div>
+                                     <!--textarea for="descripcion" class="form-control" id="descripcion">Comentario...</textarea-->                           
+                           
+                    </form>
+   
+                </br>
+                <!-- Tabla de archivos cargados -->
+                <label class="lettertitle" >Archivos Cargados</label> 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Archivos Cargados</th> 
+                            <th>Ruta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    @if (Model is IEnumerable<managerelchenchenvuelve.Models.DocumentReference> formularios)
+                    {
+                        foreach (var item in formularios)
+                        {
+                            <tr>
+
+                                <td>@item.DocumentTitle</td> 
+                                <td><a href="@Url.Content(item.StageName)" target="_blank">Descargar</a></td>
+         
+                           </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+              </div>
+          </div>
+       </div>
+       
+
+            <!-- Tabla de comentarios -->
+      <div class="col-md-6">
+         <div class="card-custom">
+           <div class="comentarios-box">
+            <h3>Comentarios</h3>
+
+                        @if (listaComenta != null)
+                        {
+                            foreach (var CommentL in listaComenta)
+                            {
+                                
+                                <div class="comentario">
+                                    <div class="comentario-info">
+                                        <p class="autor"> @CommentL.CreatedBy  <span class="fecha">@CommentL.CreatedAt</span></p>
+                                        <p class="texto"> @CommentL.Message </p>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+ 
+            <div class="nuevo-comentario"> 
+                <textarea rows="3" placeholder="Agregar comentario"></textarea>
+            </div>
+            <button class="btn-publicar">PUBLICAR</button>
+       </div>
+
+        </div>
+    </div>
+
+
+     </div>
+  </div> 
+
+@section Scripts {
+    <script>
+        function previewFile() {
+            const preview = document.getElementById('previewImage');
+            const fileName = document.getElementById('fileName');
+            const fileInput = document.getElementById('archivo');
+            const filePreview = document.getElementById('filePreview');
+            
+            const file = fileInput.files[0];
+            if (file) {
+                filePreview.style.display = 'block';
+                fileName.textContent = file.name;
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.style.display = 'none';
+                }
+            } else {
+                filePreview.style.display = 'none';
+            }
+        }
+    </script>
+}
+
+ 

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElChenChen Vuelve</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> 
+	<link href="~/css/style.css" rel="stylesheet" />
+	<link href="~/css/stylefile.css" rel="stylesheet" />
+	<link href="~/css/filecom.css" rel="stylesheet" />
+	<link href="~/css/stylereport.css" rel="stylesheet" />
+	<link href="~/css/stylepopup.css" rel="stylesheet" />
+
+</head>
+<body class="bg-light"  style="height: 100vh; margin: 0;">
+    @{
+        var nombre     = Context.Session.GetString("Nombre") ?? "";
+        var rol        = Context.Session.GetString("Roles") ?? "";
+        var EmailUser  = Context.Session.GetString("Email") ?? "";
+        var compania   = Context.Session.GetString("CompaniaUser") ?? "";
+        var iniciales  = string.Join("", nombre
+                        .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                        .Select(n => n.FirstOrDefault()));
+        bool puedeEditar = rol == "ADMINISTRADOR" || rol == "APROBACIÓN AMPYME" || rol == "APROBACIÓN CA";
+
+    }
+     <div id="viewport">
+        <aside id="sidebar">
+            <header class="sidebar text-center py-3">
+                <img src="~/img/logo.png" width="150" height="75" alt="Logo" />
+            </header>
+            <ul class="nav flex-column">
+                <li class="nav-item"> 
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#solicitudesSubmenu" role="button" aria-expanded="false">
+                        <i class="zmdi zmdi-view-dashboard"></i> <strong>🏠 Solicitudes</strong>
+                    </a>
+                    <div class="collapse" id="solicitudesSubmenu">
+                        <ul class="nav flex-column ps-3">
+                            <li class="nav-item" style="font-size:14px">
+                                <a class="nav-link" href="../Process/Index?tarea=P">Pendientes</a>
+                            </li>
+                            <li class="nav-item" style="font-size:14px">
+                                <a class="nav-link" href="../Process/Index?tarea=C">Completadas</a>
+                            </li> 
+                            <li class="nav-item" style="@(puedeEditar ? "font-size: 14px;" : "display: none; font-size: 14px;")">
+
+                                <a class="nav-link" href="../Process/Index?tarea=A">Asignar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Reportes/Reporte"><i class="zmdi zmdi-link"></i>📊 Reportes</a>
+                </li>
+                <li class="nav-item" style="@(puedeEditar ? "" : "display: none;")">
+                    <a class="nav-link" href="../Usuario/Index"><i class="zmdi zmdi-widgets"></i>➕ Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="zmdi zmdi-calendar"></i>📄 Documentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="zmdi zmdi-info-outline"></i> About</a>
+                </li>
+            </ul>
+        </aside>
+         
+        <div id="content">
+             <nav class="navbar">
+                <div class="container-fluid d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-primary"  onclick="window.history.back()">← Volver</button>
+                     </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="dropdown">
+                            <button class="btn btn-link text-dark text-decoration-none no-caret d-flex align-items-center gap-2" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                               
+                                <strong style="text-transform:uppercase">@nombre</strong>
+                                
+                                <div class="user-avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
+                                    <span style="text-transform:uppercase">@iniciales</span>
+                                </div>
+                               
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end shadow rounded-3 p-3 mt-2" aria-labelledby="userDropdown">
+                                 
+                                    <div class="profile-header">
+                                    <span>@compania</span>
+                                       
+                                    </div>
+
+                                    <div class="profile-body">
+                                       <div class="profile-avatar">@iniciales</div>
+                                        <div class="profile-info">
+                                            <h3>@nombre</h3>
+                                            <p>@EmailUser</p>
+                                            <div class="profile-links">
+                                                <a href="#">Mi Cuenta</a> 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-footer">
+                                        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">Cerrar Sesión</button>
+                                        </form>
+                                    </div>
+
+                                     
+                              
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav> 
+             
+            
+            <div class="container">
+                <main role="main">
+                    @RenderBody()
+                </main>
+            </div> 
+
+        </div>
+
+ 
+    </div>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/autonumeric@4.6.0/dist/autoNumeric.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+
+    <!-- Modal de Error -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body" id="errorModalMessage">
+            <!-- Mensaje de error aquí -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal de Alerta -->
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="alertModalLabel">Alerta</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body" id="alertModalBody">
+                    <!-- Aquí va el mensaje -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="location.reload()" class="btn btn-outline-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmacion-->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="confirmDeleteLabel">Eliminar Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div> 
+                <div class="modal-body" id="ConfirmaBody">
+                    <!-- Aquí va el mensaje -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btnConfirmDelete" onclick="mostrarModalEliminar(mensaje)">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
