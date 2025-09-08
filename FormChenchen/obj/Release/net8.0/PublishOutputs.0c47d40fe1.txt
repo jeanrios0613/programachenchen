@@ -1,16 +1,6 @@
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\FormChenchen.exe
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\publish\web.config
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\web.config
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\appsettings.Development.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\appsettings.Development.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\FormChenchen.deps.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\FormChenchen.runtimeconfig.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\publish\appsettings.Development.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\publish\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\publish\FormChenchen.deps.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\publish\publish\FormChenchen.runtimeconfig.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\FormChenchen.dll
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\FormChenchen.runtimeconfig.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\FormChenchen.pdb

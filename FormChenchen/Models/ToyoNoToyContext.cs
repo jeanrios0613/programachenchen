@@ -15,6 +15,11 @@ public partial class ToyoNoToyContext : DbContext
     {
     }
 
+    public virtual DbSet<Provincias> Provincias { get; set; }
+
+    public virtual DbSet<Distritos> Distritos { get; set; }
+    public virtual DbSet<Corregimientos> Corregimientos { get; set; }
+
     public virtual DbSet<Comment> Comments { get; set; }
 
     public virtual DbSet<Contact> Contacts { get; set; }
@@ -290,6 +295,40 @@ public partial class ToyoNoToyContext : DbContext
             entity.Property(e => e.Nombre).HasMaxLength(61);
             entity.Property(e => e.RolName).HasMaxLength(256);
             entity.Property(e => e.Username).HasMaxLength(256);
+        });
+
+        // Tabla Provincias
+        modelBuilder.Entity<Provincias>(entity =>
+        {
+            entity.ToTable("Provincias");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+        });
+
+        // Tabla Distritos
+        modelBuilder.Entity<Distritos>(entity =>
+        {
+            entity.ToTable("Distritos");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+
+            entity.HasOne(d => d.Provincia)
+                  .WithMany(p => p.Distritos)
+                  .HasForeignKey(d => d.province_id)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        // Tabla Corregimientos
+        modelBuilder.Entity<Corregimientos>(entity =>
+        {
+            entity.ToTable("Corregimientos");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+
+            entity.HasOne(c => c.Distrito)
+                  .WithMany(d => d.Corregimientos)
+                  .HasForeignKey(c => c.district_id)
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         OnModelCreatingPartial(modelBuilder);

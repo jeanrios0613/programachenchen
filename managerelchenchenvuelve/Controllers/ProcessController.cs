@@ -124,7 +124,7 @@ namespace managerelchenchenvuelve.Controllers
                     if (tarea == "A")
                     {
 
-                        query += " AND Etapa in ('Por Asignar', 'Solicitar Cambio', 'Re-Abrir Solicitud') ";
+                        query += " AND Etapa in ('Por Asignar', 'Solicitud de Cambio', 'Re-Abrir Solicitud') ";
                     }
 
 

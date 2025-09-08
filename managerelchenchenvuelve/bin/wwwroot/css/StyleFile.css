@@ -1,0 +1,49 @@
+﻿.card-custom {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    padding: 14px 20px;
+}
+
+.label-muted {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.info-box {
+    background-color: #f1f3f5;
+    padding: 0.5rem 1rem
+    border-radius: 6px;
+}
+
+.status-badge {
+    background-color: #dbeafe;
+    color: #2563eb; 
+    border-radius: 12px; 
+}
+
+
+.container__fijo {
+    flex-grow: 1;
+    padding: 1rem 1rem;
+    overflow: auto; 
+    max-height: calc(100vh - 100px);
+}
+
+@media (max-width: 768px) {
+    .container__fijo {
+        max-height: calc(100vh - 400px);
+    }
+}
+
+
+.btn-solicitud {
+    background-color: #0c1e50;
+    color: white;
+}
+
+.btn-cancela {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}

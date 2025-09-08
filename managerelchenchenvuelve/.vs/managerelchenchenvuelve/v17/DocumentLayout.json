@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\managerelchenchenvuelve\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\managerelchenchenvuelve\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|solutionrelative:views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\managerelchenchenvuelve\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\managerelchenchenvuelve\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1E7E8AA7-3896-1A95-63C5-32171D976EE7}|managerelchenchenvuelve.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 408,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f4e46f1e-cf83-40aa-b568-a627394bc994}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-31T17:14:54.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-31T17:14:55.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Process\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Process\\Index.cshtml",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Views\\Process\\Index.cshtml",
+              "RelativeToolTip": "Views\\Process\\Index.cshtml",
+              "ViewState": "AgIAABMBAAAAAAAAAAAkwCQBAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-31T16:49:54.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProcessController.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Controllers\\ProcessController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProcessController.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\managerelchenchenvuelve\\Controllers\\ProcessController.cs",
+              "RelativeToolTip": "Controllers\\ProcessController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAowGkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T16:45:43.859Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 25,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

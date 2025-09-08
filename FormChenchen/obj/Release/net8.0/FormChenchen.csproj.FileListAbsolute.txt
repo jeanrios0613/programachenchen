@@ -1,15 +1,5 @@
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\publish\web.config
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\web.config
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\appsettings.Development.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\appsettings.Development.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\FormChenchen.deps.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\FormChenchen.runtimeconfig.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\publish\appsettings.Development.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\publish\appsettings.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\publish\FormChenchen.deps.json
-C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\publish\publish\FormChenchen.runtimeconfig.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\FormChenchen.staticwebassets.runtime.json
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\FormChenchen.exe
 C:\Users\jeanr\source\repos\Toy_-_No_Toy\FormChenchen\bin\Release\net8.0\FormChenchen.deps.json

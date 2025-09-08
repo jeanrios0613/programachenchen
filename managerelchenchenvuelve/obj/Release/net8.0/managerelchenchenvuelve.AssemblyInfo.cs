@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("managerelchenchenvuelve")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d259d6024702a88a8ea9185831f79801a1aa59d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+622636f00f688fae8b83f98971333ba0c239d274")]
 [assembly: System.Reflection.AssemblyProductAttribute("managerelchenchenvuelve")]
 [assembly: System.Reflection.AssemblyTitleAttribute("managerelchenchenvuelve")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

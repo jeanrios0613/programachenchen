@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "ContainingType": "UbicacionesController",
+    "Method": "GetCorregimientos",
+    "RelativePath": "api/Ubicaciones/corregimientos/{distritoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "distritoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UbicacionesController",
+    "Method": "GetDistritos",
+    "RelativePath": "api/Ubicaciones/distritos/{provinciaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "provinciaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UbicacionesController",
+    "Method": "GetProvincias",
+    "RelativePath": "api/Ubicaciones/provincias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

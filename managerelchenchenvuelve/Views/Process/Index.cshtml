@@ -12,7 +12,7 @@
     int endPage          = Math.Min(totalPages - 1, currentPage + delta);
     var lista            = ViewBag.listUsers as List<AsignacionClass>;
     var nombre           = ViewBag.nombreUsuario;
-    string compania      = ViewBag.CompaniaUser; 
+    var compania         = Context.Session.GetString("CompaniaUser") ?? ""; 
     bool puedeEditar     = ViewBag.AdminUser == "ADMINISTRADOR" || 
                            ViewBag.AdminUser == "APROBACIÓN AMPYME" ||
                            ViewBag.AdminUser  == "APROBACIÓN CA";
@@ -268,16 +268,26 @@
                         else
                         {
                             foreach (var item in formularios)
-                            {  <tr>  
+                            {  <tr>
 
-                                  @if (puedeEditar ){
+                              @if (puedeEditar && item.gestor == compania) {
                                      <td style="min-width: 30px; width: 30px;">
                                         <div class="d-flex align-items-center" >
                                             <input type="checkbox" class="form-check-input tarea-checkbox" style="width: 20px; height: 20px;" data-id="@item.Id" onchange="actualizarSeleccion()" @(item.Etapa == "Solicitud de Cambio" || item.Etapa == "Completada" ? "disabled" : "")>
                                         </div>
+                                                </td>
+
+                                            }
+                                            else
+                                            {
+                                    <td style="min-width: 30px; width: 30px;">
+                                        <div class="d-flex align-items-center">
+                                            <input class="form-check-input tarea-checkbox" style="width: 20px; height: 20px;" disabled>
+                                        </div>
                                     </td>
-                                  }
-                                    <td style="cursor: pointer; min-width: 25px; width: 25px;">
+
+                                            }
+                                            <td style="cursor: pointer; min-width: 25px; width: 25px;">
                                         <div class="p-table__content__cell">
                                             <div class="user-avatar" title="@Html.DisplayFor(m => item.UserName)">
                                                             @{

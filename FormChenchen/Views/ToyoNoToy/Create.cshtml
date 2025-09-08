@@ -128,7 +128,8 @@
                         <input asp-for="Enterprise.BusinessName"  type="text" class="form-control" id="BusinessName" required> 
                         <span asp-validation-for="Enterprise.BusinessName" class="text-danger" style="font-size: 14px"></span>
                  </div>
-
+                
+                
            
                 <div class="col-md-6 mb-3">
                     <label asp-for="Enterprise.EconomicActivity" class="form-label" style="width: 100%;">* Actividad económica</label>
@@ -204,12 +205,18 @@
                     <span asp-validation-for="Enterprise.Instagram" class="text-danger" style="font-size: 14px"></span>
                 </div>
             </div>
-
+             
             <div class="mb-3">
                 <label for="BusinessDescription" class="form-label">* Describe tu idea de negocio</label>
-                <textarea asp-for="Enterprise.BusinessDescription"   class="form-control h4 ng-pristine ng-invalid ng-touched" id="BusinessDescription" placeholder="Descripción breve..." required></textarea>
-                <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
-
+                <textarea asp-for="Enterprise.BusinessDescription"
+                          class="form-control"
+                          id="BusinessDescription"
+                          maxlength="500"
+                          required></textarea>
+                <div class="d-flex justify-content-between">
+                    <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
+                    <small id="charCountBusiness" class="text-muted">0 / 500</small>
+                </div>
             </div>
 
         </section>
@@ -219,18 +226,16 @@
         <section id="EnterprisesNegoc">
           
             <div class="row mb-3">
-
-                <div class="col-md-6 mb-3">
+                 <div class="col-md-6 mb-3">
                     <label for="RucEmpresa" class="form-label bg-white custom-label" style="width: 100%;">RUC</label>
-                    <input for="Enterprise.RucEmpresa"   type="text" class="form-control ng-pristine ng-valid ng-touched" id="RucEmpresa" required>
+                    <input for="Enterprise.RucEmpresa"   type="text" class="form-control" id="RucEmpresa" required>
                     <span asp-validation-for="Enterprise.RucEmpresa" class="text-danger" style="font-size: 14px"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="DvEmpresa" class="form-label" style="width: 100%;">DV</label>
-                    <input for="Enterprise.DvEmpresa"  type="number" class="form-control" maxlength="4" size="4" id="DvEmpresa" required>
+                    <input asp-for="Enterprise.DvEmpresa" type="number" class="form-control" id="DvEmpresa" required>
                     <span asp-validation-for="Enterprise.DvEmpresa" class="text-danger" style="font-size: 14px"></span>
-                </div>
-            
+                </div> 
              </div>
 
             <div class="row mb-3">
@@ -262,9 +267,17 @@
 
             <div class="mb-3">
                 <label for="BusinessDescription" class="form-label">* Describe tu idea de negocio</label>
-                <textarea asp-for="Enterprise.BusinessDescription"  class="form-control h4 ng-pristine ng-invalid ng-touched" id="BusinessDescription" placeholder="Descripción breve..." required></textarea>
-                <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
+                <textarea asp-for="Enterprise.BusinessDescription"
+                          class="form-control"
+                          id="BusinessDescription"
+                          maxlength="500"
+                          required></textarea>
+                <div class="d-flex justify-content-between">
+                    <span asp-validation-for="Enterprise.BusinessDescription" class="text-danger" style="font-size: 14px"></span>
+                    <small id="charCountBusiness" class="text-muted">0 / 500</small>
+                </div>
             </div>
+
         </section>
 
 
@@ -309,8 +322,15 @@
             </div>
             <div class="mb-3">
                 <label for="ReasonForMoney" class="form-label">* ¿En qué lo invertirás?</label>
-                <textarea asp-for="RequestDetail.ReasonForMoney"    type="text" class="form-control" id="ReasonForMoney" required></textarea>
-                <span asp-validation-for="RequestDetail.ReasonForMoney" class="text-danger" style="font-size: 14px"></span>
+                <textarea asp-for="RequestDetail.ReasonForMoney"
+                          class="form-control"
+                          id="ReasonForMoney"
+                          maxlength="500"
+                          required></textarea>
+                <div class="d-flex justify-content-between">
+                    <span asp-validation-for="RequestDetail.ReasonForMoney" class="text-danger" style="font-size: 14px"></span>
+                    <small id="charCount" class="text-muted">0 / 500</small>
+                </div>
             </div>
 
         </section>

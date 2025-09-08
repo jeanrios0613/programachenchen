@@ -34,11 +34,7 @@ namespace elchenchenvuelvecy.Controllers
             
 
 
-            /*    if (!string.IsNullOrEmpty(codigoSolicitud) && !string.IsNullOrEmpty(email))
-                {
-                    SendConfirmationEmail(email, codigoSolicitud);
-                }
-            */
+        
             ViewBag.Codigo = codigoSolicitud;
             ViewBag.phone = TempData["NumeroWhatsapp"];
 
@@ -57,12 +53,9 @@ namespace elchenchenvuelvecy.Controllers
         public IActionResult Create(FormularioClass Formulario, string TipoFormulario, decimal MonthlySales)
         {
 
-            string Cliente = Formulario.Contact.FullName;
-            //string monto = Formulario.RequestDetail.QuantityToInvert.ToString();
+            string Cliente = Formulario.Contact.FullName; 
 
-            _logger.LogInformation("Create POST action called");
-            //_logger.LogInformation("Formulario data received - Contact: {@MonthlySales}", MonthlySales);
-            //_logger.LogInformation("validando DAtos para chen chen: {@monto}", monto);
+            _logger.LogInformation("Create POST action called"); 
 
                 
             var existeCedula = _context.RequestInfos

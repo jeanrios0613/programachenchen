@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations; 
 
 namespace FormChenchen.Models;
 
@@ -9,15 +9,22 @@ public partial class Enterprise
 {
     public Guid Id { get; set; }
 
-    [Required(ErrorMessage = "Este campo es obligatorio")]
+    [Required(ErrorMessage = "El nombre de la empresa es obligatorio")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "El nombre debe tener entre 2 y 100 caracteres")]
+    [RegularExpression(@"^[a-zA-Z0-9&\-\.'\s]+$",
+        ErrorMessage = "El nombre solo puede contener letras, números, espacios y los símbolos & - . '")]  
     public string? BusinessName { get; set; }
 
+
+    [StringLength(500, ErrorMessage = "La URL no puede exceder 500 caracteres")]
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string BusinessDescription { get; set; }
 
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string EconomicActivity { get; set; } = null!;
 
+
+    [StringLength(50, ErrorMessage = "La URL no puede exceder 50 caracteres")]
     [RegularExpression(@"^[_a-zA-Z0-9][a-zA-Z0-9._]{0,29}$",
     ErrorMessage = "El nombre de usuario de Instagram no es válido.")]
     public string? Instagram { get; set; } 
@@ -27,7 +34,7 @@ public partial class Enterprise
     public string? RucEmpresa { get; set; }
 
 
-    [NotMapped]
+    [NotMapped] 
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string? DvEmpresa { get; set; }
 
@@ -38,12 +45,12 @@ public partial class Enterprise
         set { }
     }
 
-    //[RegularExpression(@"^(https?:\/\/)?www\.([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?$",
-    //ErrorMessage = "El sitio web no tiene un formato válido.")]
+    [Required(ErrorMessage = "La página web es obligatoria")]
+    [StringLength(100, ErrorMessage = "La URL no puede exceder 100 caracteres")]
+    [RegularExpression(@"^(https?:\/\/)?([\w\-]+\.)+[\w\-]+(\/[\w\-._~:\/?#[\]@!$&'()*+,;=]*)?$",
+        ErrorMessage = "El sitio web no tiene un formato válido.")]
+    public string? WebSite { get; set; }
 
-    [RegularExpression(@"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$",
-    ErrorMessage = "El sitio web no tiene un formato válido.")]
-    public string? WebSite { get; set; } = "No Tiene Sitio Web";
 
     public DateTime CreationDate { get; set; }
 
@@ -64,6 +71,7 @@ public partial class Enterprise
     public decimal MonthlySales { get; set; }
 
     [Required(ErrorMessage = "Este campo es obligatorio")]
+    
     public DateTime OperationsStartDate { get; set; }
 
     [Required(ErrorMessage = "Este campo es obligatorio")]

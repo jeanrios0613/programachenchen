@@ -12,6 +12,7 @@ public partial class RequestDetail
     [RegularExpression(@"^(\d{1,3}(,\d{3})*|\d+)(\.\d{1,2})?$", ErrorMessage = "Ingrese un número válido con hasta 2 decimales.")]
     public decimal QuantityToInvert { get; set; }
 
+    [StringLength(500, ErrorMessage = "No puede exceder 500 caracteres")]
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string ReasonForMoney { get; set; } = null!;
 

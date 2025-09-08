@@ -1,0 +1,272 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\corregimientos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\corregimientos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\views\\toyonotoy\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:views\\toyonotoy\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\requestdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\requestdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\formchenchen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:formchenchen.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\economicactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\economicactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\enterprise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\enterprise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\distritos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\distritos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\controllers\\ubicacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:controllers\\ubicacionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\controllers\\toyonotoycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:controllers\\toyonotoycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\provincias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\provincias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|c:\\users\\jeanr\\source\\repos\\toy_-_no_toy\\formchenchen\\models\\toyonotoycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4D96E-3478-4614-85C0-3376AD26A939}|FormChenchen.csproj|solutionrelative:models\\toyonotoycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 408,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAACgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-02T17:27:05.619Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f4e46f1e-cf83-40aa-b568-a627394bc994}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RequestDetail.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\RequestDetail.cs",
+              "RelativeDocumentMoniker": "Models\\RequestDetail.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\RequestDetail.cs",
+              "RelativeToolTip": "Models\\RequestDetail.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T21:25:46.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Views\\ToyoNoToy\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\ToyoNoToy\\Create.cshtml",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Views\\ToyoNoToy\\Create.cshtml",
+              "RelativeToolTip": "Views\\ToyoNoToy\\Create.cshtml",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAswAwBAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-03T20:40:54.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Corregimientos.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Corregimientos.cs",
+              "RelativeDocumentMoniker": "Models\\Corregimientos.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Corregimientos.cs",
+              "RelativeToolTip": "Models\\Corregimientos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T18:04:57.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Distritos.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Distritos.cs",
+              "RelativeDocumentMoniker": "Models\\Distritos.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Distritos.cs",
+              "RelativeToolTip": "Models\\Distritos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T18:04:15.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ToyoNoToyContext.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\ToyoNoToyContext.cs",
+              "RelativeDocumentMoniker": "Models\\ToyoNoToyContext.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\ToyoNoToyContext.cs",
+              "RelativeToolTip": "Models\\ToyoNoToyContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T18:00:42.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Provincias.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Provincias.cs",
+              "RelativeDocumentMoniker": "Models\\Provincias.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Provincias.cs",
+              "RelativeToolTip": "Models\\Provincias.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T18:00:10.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UbicacionesController.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Controllers\\UbicacionesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UbicacionesController.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Controllers\\UbicacionesController.cs",
+              "RelativeToolTip": "Controllers\\UbicacionesController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAcwBAAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T17:44:42.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ToyoNoToyController.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Controllers\\ToyoNoToyController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ToyoNoToyController.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Controllers\\ToyoNoToyController.cs",
+              "RelativeToolTip": "Controllers\\ToyoNoToyController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwCgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T17:25:25.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormChenchen",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\FormChenchen.csproj",
+              "RelativeDocumentMoniker": "FormChenchen.csproj",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\FormChenchen.csproj",
+              "RelativeToolTip": "FormChenchen.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-03T15:17:54.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EconomicActivity.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\EconomicActivity.cs",
+              "RelativeDocumentMoniker": "Models\\EconomicActivity.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\EconomicActivity.cs",
+              "RelativeToolTip": "Models\\EconomicActivity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T14:56:56.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Enterprise.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Enterprise.cs",
+              "RelativeDocumentMoniker": "Models\\Enterprise.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Enterprise.cs",
+              "RelativeToolTip": "Models\\Enterprise.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAwDYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T14:14:05.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Contact.cs",
+              "DocumentMoniker": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Contact.cs",
+              "RelativeDocumentMoniker": "Models\\Contact.cs",
+              "ToolTip": "C:\\Users\\jeanr\\source\\repos\\Toy_-_No_Toy\\FormChenchen\\Models\\Contact.cs",
+              "RelativeToolTip": "Models\\Contact.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAxwCUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-02T16:02:58.525Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 25,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
