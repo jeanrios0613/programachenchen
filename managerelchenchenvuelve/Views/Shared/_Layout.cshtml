@@ -10,10 +10,11 @@
 	<link href="~/css/filecom.css" rel="stylesheet" />
 	<link href="~/css/stylereport.css" rel="stylesheet" />
 	<link href="~/css/stylepopup.css" rel="stylesheet" />
-
+	
 </head>
 <body class="bg-light"  style="height: 100vh; margin: 0;">
     @{
+        var IdUsers    = Context.Session.GetString("IdUser") ?? "";
         var nombre     = Context.Session.GetString("Nombre") ?? "";
         var rol        = Context.Session.GetString("Roles") ?? "";
         var EmailUser  = Context.Session.GetString("Email") ?? "";
@@ -23,16 +24,27 @@
                         .Select(n => n.FirstOrDefault()));
         bool puedeEditar = rol == "ADMINISTRADOR" || rol == "APROBACIÓN AMPYME" || rol == "APROBACIÓN CA";
 
+        var cambiopassword = "../Account/ChangePassword?id=" + IdUsers;
+
     }
      <div id="viewport">
         <aside id="sidebar">
             <header class="sidebar text-center py-3">
-                <img src="~/img/logo.png" width="150" height="75" alt="Logo" />
+                <img src="~/img/logo.svg" width="150" height="75" alt="Logo" />
             </header>
             <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="../Process/Index?tarea=A"
+                       style="@(puedeEditar ? " " : "display: none;")">
+                         <span>📥 Bandeja de entrada</span> 
+                        
+                    </a>
+                </li> 
+
                 <li class="nav-item"> 
                     <a class="nav-link dropdown-toggle" data-bs-toggle="collapse" href="#solicitudesSubmenu" role="button" aria-expanded="false">
-                        <i class="zmdi zmdi-view-dashboard"></i> <strong>🏠 Solicitudes</strong>
+                        <strong>📝 Mis tareas</strong>
                     </a>
                     <div class="collapse" id="solicitudesSubmenu">
                         <ul class="nav flex-column ps-3">
@@ -42,21 +54,18 @@
                             <li class="nav-item" style="font-size:14px">
                                 <a class="nav-link" href="../Process/Index?tarea=C">Completadas</a>
                             </li> 
-                            <li class="nav-item" style="@(puedeEditar ? "font-size: 14px;" : "display: none; font-size: 14px;")">
-
-                                <a class="nav-link" href="../Process/Index?tarea=A">Asignar</a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../Reportes/Reporte"><i class="zmdi zmdi-link"></i>📊 Reportes</a>
+                    <a class="nav-link" href="../Reportes/Reporte">📊 Reportes</a>
                 </li>
                 <li class="nav-item" style="@(puedeEditar ? "" : "display: none;")">
-                    <a class="nav-link" href="../Usuario/Index"><i class="zmdi zmdi-widgets"></i>➕ Usuarios</a>
+                    <a class="nav-link" href="../Usuario/Index">➕ Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="zmdi zmdi-calendar"></i>📄 Documentos</a>
+                    <a class="nav-link" href="#">📄 Documentos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="zmdi zmdi-info-outline"></i> About</a>
@@ -94,7 +103,8 @@
                                             <h3>@nombre</h3>
                                             <p>@EmailUser</p>
                                             <div class="profile-links">
-                                                <a href="#">Mi Cuenta</a> 
+                                            <a href=@cambiopassword>Cambiar Constraseña</a>
+                                           
                                             </div>
                                         </div>
                                     </div>
@@ -132,6 +142,7 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.6.0/dist/autoNumeric.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/apiservice.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 
 

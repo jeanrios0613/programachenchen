@@ -17,8 +17,7 @@
         if (negocSections.parent().length === 0) {
             negocSections.insertAfter("#Conctact").parent();
         }
-
-
+ 
         $("#envio, #Details, #Conctact, #EnterprisesEmpre, #EnterprisesNegoc, #Emprendedor, #Negocio").hide();
 
         if (seleccion == "Emprendimiento") {
@@ -26,6 +25,7 @@
             $("#Negocio").hide();
             negocSections.detach();
             $('div').removeClass('position-absolute');
+
         } else if (seleccion == "Negocio existente") {
             $("#envio, #Details, #EnterprisesNegoc, #Negocio, #Conctact").show();
 
@@ -62,6 +62,28 @@
     ReasonForMoney.addEventListener("input", () => {
         charCount.textContent = `${ReasonForMoney.value.length} / ${maxLength}`;
     });
+ 
+    async function loadEconomicActivities() {
+        const response   = await fetch("/api/ubicaciones/EconomicActivities");
+        const activities = await response.json();
+
+        const select = document.getElementById("EconomicActivity");
+
+        activities.forEach(a => { const option = document.createElement("option");
+        option.value       = a.name;
+        option.textContent = a.name;
+        select.appendChild(option);
+       });
+     }
+
+    document.getElementById("EconomicActivity").addEventListener("change", function () {
+             const otherDiv = document.getElementById("EconomicActivityOther");
+               otherDiv.style.display = this.value === "Otros" ? "block" : "none";
+          });
+
+    // Cargar lista al iniciar
+    loadEconomicActivities(); 
+
 
     // Inicializar Provincias
     fetch("/api/ubicaciones/provincias")
@@ -224,6 +246,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let isValid = true;
     let firstInvalidField = null;
 
+    function obtenerNombreCampo(field) {
+        if (field.id) {
+            const lbl = document.querySelector('label[for="' + field.id + '"]');
+            if (lbl && lbl.textContent.trim()) return lbl.textContent.trim();
+        }
+        const containerLabel = field.closest('div')?.querySelector('label');
+        if (containerLabel && containerLabel.textContent.trim()) return containerLabel.textContent.trim();
+        if (field.getAttribute('aria-label')) return field.getAttribute('aria-label');
+        if (field.placeholder) return field.placeholder;
+        return field.name || field.id || 'Campo';
+    }
+
 
     openModalBtn.addEventListener('click', function () {
         if (!termsCheckbox.checked) {
@@ -232,12 +266,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
      
 
+        const camposInvalidos = [];
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
                 field.classList.add('is-invalid');
+                camposInvalidos.push(obtenerNombreCampo(field));
                 if (!firstInvalidField) {
-                    firstInvalidField = field;
+                     firstInvalidField = field;
                 }
             } else {
                 field.classList.remove('is-invalid');
@@ -246,14 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // ESTO ACTIVA EL RECUADRO EN ROJO DE ADVERTENCIA
-        if (!isValid) {
-            mostrarToast('Por favor complete todos los campos requeridos');
-            if (firstInvalidField) {
-                firstInvalidField.focus();
-            }
-            return;
-        }
-
+  
  
         validationMessages.forEach(span => {
             if (span.textContent.trim() !== '') {
@@ -262,7 +291,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (hasValidationErrors) {
-            mostrarToast('Por favor corrija los errores en el formulario antes de continuar.');
+            const errores = [];
+            validationMessages.forEach(span => {
+                const txt = span.textContent.trim();
+                if (txt) errores.push(txt);
+            });
+            const detalle = errores.length ? ' Detalles: ' + [...new Set(errores)].join(' | ') : '';
+            mostrarToast('Por favor corrija los errores en el formulario antes de continuar.' + detalle);
             return;
         }
 
@@ -286,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const select = document.getElementById('EconomicActivity');
@@ -338,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
- 
+ /*
     function actualizarActividadEconomica() {
         if (!selectActividad || !otherInput) return;
 
@@ -354,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
             selectActividad.name = 'Enterprise.EconomicActivity';
             otherInput.name = '';
         }
-    }
+    } */
 
     function actualizarSecciones() {
         if (tipoFormularioSelect.value === "Emprendimiento") {
@@ -383,6 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         actualizarActividadEconomica();
     }
+
 
     tipoFormularioSelect.addEventListener('change', actualizarSecciones);
 

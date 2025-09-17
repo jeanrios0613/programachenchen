@@ -1,6 +1,7 @@
 ﻿using elchenchenvuelvecy.Controllers;
 using FormChenchen.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -42,4 +43,16 @@ public class UbicacionesController : ControllerBase
                                      .ToList();
         return Ok(corregimientos);
     }
+
+
+     [HttpGet("EconomicActivities")]
+     public async Task<IActionResult> GetAll()
+      {
+            var activities = await _context.EconomicActivities
+                .OrderBy(e => e.Name)
+                .ToListAsync();
+
+            return Ok(activities);
+      } 
+
 }

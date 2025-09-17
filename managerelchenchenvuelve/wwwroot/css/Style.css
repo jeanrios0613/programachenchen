@@ -69,17 +69,17 @@ table {
 }
 
 #sidebar {
-    width: 200px;
+    width: 235px;
     background-color: #0f1d40;
     color: white;
-    padding: 20px 15px;
+    padding: 1px 1px;
     flex-shrink: 0; 
     position: relative;
 }
   #sidebar .nav-link {
         color: white;
         font-weight: 500;
-        margin-bottom: 10px;
+        margin-bottom: px;
     }
 
         #sidebar .nav-link i {
@@ -397,5 +397,10 @@ max-height: calc(95vh - 200px);
     position: relative;
 }
 
+
+.scrollable-select {
+    max-height: 50px; /* altura máxima visible */
+    overflow-y: auto; /* activa el scroll vertical */
+}
 
  

@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Http.HttpResults;
+using DocumentFormat.OpenXml.InkML;
 
 namespace managerelchenchenvuelve.Controllers
 {
@@ -191,7 +192,7 @@ namespace managerelchenchenvuelve.Controllers
                     updateQuery += ",Porque_no_contacto = @contacto ";
                 }
 
-                updateQuery += "WHERE Codigo_de_solicitud   = @CodigoDeSolicitud";
+                updateQuery += " WHERE Codigo_de_solicitud   = @CodigoDeSolicitud";
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {   new SqlParameter("@FechaActualizacion", DateTime.Now),
@@ -245,6 +246,21 @@ namespace managerelchenchenvuelve.Controllers
 
                 // Get the current user from session
                 var username = HttpContext.Session.GetString("UserName");
+                var gestores = _context.RequestInfos
+                              .Where(r => r.CodigoDeSolicitud == requestCode)
+                              .Select(r => r.Gestor)
+                              .FirstOrDefault();
+
+
+                //aqui cambira a lo opuesto de la empresa. 
+                var compania2 = _context.Companies
+                     .Where(c => c.Nombre != gestor)
+                     .Select(c => c.Nombre)
+                     .FirstOrDefault(); // devuelve string o null
+
+
+                _logger.LogInformation("NOMBRE NUEVO DE COMPAÑIOAAAAA ::::::..........:::::::....{CompaniaCamb}", compania2);
+ 
                 if (string.IsNullOrEmpty(username))
                 {
                     _logger.LogWarning("No se encontró usuario en la sesión");
@@ -265,9 +281,9 @@ namespace managerelchenchenvuelve.Controllers
                     new SqlParameter("@createdAt", DateTime.Now),
                     new SqlParameter("@StageName", gestor)
                 };
+                
 
-
-				string UpdateQuery = @"UPDATE [dbo].[Request_info]  SET Fecha_Actualizacion = @FechaActualizacion,";
+                string UpdateQuery = @"UPDATE [dbo].[Request_info]  SET Fecha_Actualizacion = @FechaActualizacion,";
 
 				if (TypeRequest == "AprovedRequest")
 				{
@@ -289,18 +305,19 @@ namespace managerelchenchenvuelve.Controllers
 
 				}
 				else if (TypeRequest == "AprovedChange")
-				{
-
+				{ 
 					UpdateQuery += " Etapa = 'Por Asignar', " +
 								   " Usuario_Asignado = null, " +
                                    " TipoRequest = 2, " +
-								   " Gestor = 'Gestión Caja de Ahorros' ";
+								   " Gestor = @negociocompa ";
 				}
 
 				UpdateQuery += " WHERE Codigo_de_solicitud = @codigo; ";
 				SqlParameter[] parameters2 = new SqlParameter[] 
                 {  new SqlParameter("@FechaActualizacion", DateTime.Now),
-                   new SqlParameter("@codigo", requestCode)   
+
+                   new SqlParameter("@codigo", requestCode)   ,
+                   new SqlParameter("@negociocompa", compania2)   
                 };
 
 				_db.ExecuteNonQuery(UpdateQuery, parameters2);

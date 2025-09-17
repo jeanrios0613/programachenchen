@@ -1,5 +1,7 @@
 ﻿@model FormChenchen.Models.FormularioClass
 @{  
+
+    // MUESTRA LAS PANTALLA EMERGENTE Y LOS ALERTAS QUEDAN GENERAR DURANTE LA SOLICITUD
     if (TempData["SuccessMessage"] != null)
     {
         <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
@@ -72,12 +74,12 @@
             <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                     <label for="Nombre" class="form-label" style="width: 100%;">* Nombre</label>
-                    <input asp-for="Contact.Nombre"  type="text" class="form-control" placeholder="Nombre" style="width: 100%;" required>
+                    <input asp-for="Contact.Nombre" type="text" class="form-control text-capitalize" placeholder="Nombre" style="width: 100%;" required>
                     <span asp-validation-for="Contact.Nombre" class="text-danger" style="font-size: 14px"></span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="Apellido" class="form-label" style="width: 100%;">* Apellido</label>
-                    <input asp-for="Contact.Apellido"  type="text" class="form-control" placeholder="Apellido" style="width: 100%;" required>
+                    <input asp-for="Contact.Apellido" type="text" class="form-control text-capitalize" placeholder="Apellido" style="width: 100%;" required>
                     <span asp-validation-for="Contact.Apellido" class="text-danger" style="font-size: 14px"></span>
                 </div>
             </div>
@@ -97,7 +99,14 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label asp-for="Contact.IdentificationNumber" class="form-label">* N.º de identificación</label>
-                    <input asp-for="Contact.IdentificationNumber"  type="text" class="form-control" placeholder="Ej: 0-0000-0000" required>
+                    <input asp-for="Contact.IdentificationNumber"
+                           id="IdentificationNumber"
+                           type="text"
+                           class="form-control"
+                           placeholder="Ej: 0-0000-0000"
+                           required
+                           oninput="this.value = this.value.toUpperCase()">
+
                     <span asp-validation-for="Contact.IdentificationNumber" class="text-danger" style="font-size: 14px"></span>
                 </div>
             </div>
@@ -125,40 +134,21 @@
             <div class="row mb-3">
                 <div class="col-md-6 mb-3">
                         <label asp-for="Enterprise.BusinessName" class="form-label">* Nombre del negocio</label>
-                        <input asp-for="Enterprise.BusinessName"  type="text" class="form-control" id="BusinessName" required> 
-                        <span asp-validation-for="Enterprise.BusinessName" class="text-danger" style="font-size: 14px"></span>
+                    <input asp-for="Enterprise.BusinessName" type="text" class="form-control text-capitalize" id="BusinessName" required>
+                    <span asp-validation-for="Enterprise.BusinessName" class="text-danger" style="font-size: 14px"></span>
                  </div>
                 
-                
-           
                 <div class="col-md-6 mb-3">
                     <label asp-for="Enterprise.EconomicActivity" class="form-label" style="width: 100%;">* Actividad económica</label>
-                    <select asp-for="Enterprise.EconomicActivity"  class="form-select" id="EconomicActivity" style="width: 100%;" required>
-                        <option selected disabled value="">Seleccione una opción</option> 
-                        <option value="Automotriz">Automotriz</option>
-                        <option value="Construcción">Construcción</option>
-                        <option value="Comercio">Comercio</option>
-                        <option value="Cultura y recreación">Cultura y recreación</option>
-                        <option value="Educación">Educación</option>
-                        <option value="Energía">Energía</option> 
-                        <option value="Investigación y desarrollo">Investigación y desarrollo</option>
-                        <option value="Industria Manufacturera">Industria Manufacturera</option>
-                        <option value="Industria No Manufacturera">Industria No Manufacturera</option> 
-                        <option value="Salud">Salud</option>
-                        <option value="Servicios">Servicios</option>
-                        <option value="Servicios Financieros">Servicios Financieros</option>
-                        <option value="Tecnología de la información">Tecnología de la información</option>
-                        <option value="Textiles">Textiles</option>
-                        <option value="Transportes">Transportes</option>
-                        <option value="Turismo">Turismo</option>
-                        <option value="Zona Libre">Zona Libre</option>
-                        <option value="Otros">Otros</option>
-                    </select> 
-                    <span asp-validation-for="Enterprise.EconomicActivity" class="text-danger" style="font-size: 14px"></span>
-                    <div class="col-md-6 mb-3" id="EconomicActivityOther" style="display:none; width: 100%;">
-                        <input type="text" id="EconomicActivityOther" class="form-control" placeholder="Especifique otra actividad" />
+                    <select asp-for="Enterprise.EconomicActivity" class="form-select" id="EconomicActivity" style="width: 100%;" required>
+                        <option selected disabled value="">Seleccione una opción</option>
+                    </select>
+
+                    <div id="EconomicActivityOther" class="col-md-6 mb-3" style="display:none; width: 100%;">
+                        <input type="text" class="form-control" placeholder="Especifique otra actividad" />
                     </div>
                 </div>
+                 
                
             </div>
          </section>
@@ -177,8 +167,8 @@
 
                 </div>
                 <div class="col-md-6 mb-3">
-                    @Html.LabelFor(m => m.Enterprise.WebSite, htmlAttributes: new { @class = "form-label" })
-                    @Html.TextBoxFor(m => m.Enterprise.WebSite, new { @class = "form-control", placeholder = "https://www.ejemplo.com" })
+                    <label asp-for="Enterprise.WebSite" class="form-label">Sitio web de la empresa</label>
+                    <input asp-for="Enterprise.WebSite" type="text" class="form-control" placeholder="https://www.ejemplo.com">
                     <span asp-validation-for="Enterprise.WebSite" class="text-danger" style="font-size: 14px"></span>
                 </div>
             </div>
@@ -227,12 +217,12 @@
           
             <div class="row mb-3">
                  <div class="col-md-6 mb-3">
-                    <label for="RucEmpresa" class="form-label bg-white custom-label" style="width: 100%;">RUC</label>
-                    <input for="Enterprise.RucEmpresa"   type="text" class="form-control" id="RucEmpresa" required>
+                    <label for="RucEmpresa" class="form-label bg-white custom-label" style="width: 100%;">* RUC</label>
+                    <input asp-for="Enterprise.RucEmpresa" type="text" class="form-control" id="RucEmpresa" required>
                     <span asp-validation-for="Enterprise.RucEmpresa" class="text-danger" style="font-size: 14px"></span>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="DvEmpresa" class="form-label" style="width: 100%;">DV</label>
+                    <label for="DvEmpresa" class="form-label" style="width: 100%;">* DV</label>
                     <input asp-for="Enterprise.DvEmpresa" type="number" class="form-control" id="DvEmpresa" required>
                     <span asp-validation-for="Enterprise.DvEmpresa" class="text-danger" style="font-size: 14px"></span>
                 </div> 
@@ -255,7 +245,7 @@
 
             <div class="mb-3">
                 <label asp-for="Enterprise.WebSite" class="form-label">Sitio web de la empresa</label>
-                <input asp-for="Enterprise.WebSite" type="text" class="form-control"  placeholder="https://www.ejemplo.com">
+                <input asp-for="Enterprise.WebSite" type="text" class="form-control" id="WebSite" placeholder="https://www.ejemplo.com">
                 <span asp-validation-for="Enterprise.WebSite" class="text-danger" style="font-size: 14px"></span>
             </div>
 
@@ -316,7 +306,7 @@
 
             <h5 class="mt-4">Datos de la Solicitud</h5>
             <div class="mb-3">
-                <label for="QuantityToInvert" class="form-label">* ¿Cuánto Chen Chen necesitas?</label>
+                <label asp-for="RequestDetail.QuantityToInvert" class="form-label">* ¿Cuánto Chen Chen necesitas?</label>
                 <input asp-for="RequestDetail.QuantityToInvert" type="text" class="form-control" id="QuantityToInvert" required placeholder="$">
                 <span asp-validation-for="RequestDetail.QuantityToInvert" class="text-danger" style="font-size: 14px"></span>
             </div>

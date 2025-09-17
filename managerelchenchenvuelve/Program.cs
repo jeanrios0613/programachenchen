@@ -19,7 +19,8 @@ builder.Services.AddControllersWithViews(/*options =>
         .RequireAuthenticatedUser()
         .Build();
     options.Filters.Add(new AuthorizeFilter(policy));
-}*/);
+}*/
+  );
 
 
 

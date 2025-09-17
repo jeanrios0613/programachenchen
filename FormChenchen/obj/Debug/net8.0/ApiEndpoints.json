@@ -33,6 +33,16 @@
   },
   {
     "ContainingType": "UbicacionesController",
+    "Method": "GetAll",
+    "RelativePath": "api/Ubicaciones/EconomicActivities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UbicacionesController",
     "Method": "GetProvincias",
     "RelativePath": "api/Ubicaciones/provincias",
     "HttpMethod": "GET",

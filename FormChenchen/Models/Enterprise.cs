@@ -9,16 +9,14 @@ public partial class Enterprise
 {
     public Guid Id { get; set; }
 
-    [Required(ErrorMessage = "El nombre de la empresa es obligatorio")]
-    [StringLength(100, MinimumLength = 2, ErrorMessage = "El nombre debe tener entre 2 y 100 caracteres")]
-    [RegularExpression(@"^[a-zA-Z0-9&\-\.'\s]+$",
-        ErrorMessage = "El nombre solo puede contener letras, números, espacios y los símbolos & - . '")]  
+    [Required(ErrorMessage = "Este campo es obligatorio")] 
     public string? BusinessName { get; set; }
 
 
     [StringLength(500, ErrorMessage = "La URL no puede exceder 500 caracteres")]
     [Required(ErrorMessage = "Este campo es obligatorio")]
-    public string BusinessDescription { get; set; }
+    public string? BusinessDescription { get; set; }
+
 
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string EconomicActivity { get; set; } = null!;
@@ -38,12 +36,14 @@ public partial class Enterprise
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string? DvEmpresa { get; set; }
 
+
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string Ruc
     {
         get => $"{RucEmpresa} DV  {DvEmpresa}";
         set { }
     }
+
 
     [Required(ErrorMessage = "La página web es obligatoria")]
     [StringLength(100, ErrorMessage = "La URL no puede exceder 100 caracteres")]

@@ -13,8 +13,8 @@
     var lista            = ViewBag.listUsers as List<AsignacionClass>;
     var nombre           = ViewBag.nombreUsuario;
     var compania         = Context.Session.GetString("CompaniaUser") ?? ""; 
-    bool puedeEditar     = ViewBag.AdminUser == "ADMINISTRADOR" || 
-                           ViewBag.AdminUser == "APROBACIÓN AMPYME" ||
+    bool puedeEditar     = ViewBag.AdminUser  == "ADMINISTRADOR" || 
+                           ViewBag.AdminUser  == "APROBACIÓN AMPYME" ||
                            ViewBag.AdminUser  == "APROBACIÓN CA";
      
 
@@ -36,8 +36,7 @@
                         Completadas
                     </span>
                     <span id="TareaA" class="p-table__opts__navs__titles__title">
-                        Tareas por
-                        Asignar (Supervisor)
+                        Bandeja de Entradas
                     </span>
                     <span class="p-table__opts__navs__titles__subtitle">
                         Administra y monitorea

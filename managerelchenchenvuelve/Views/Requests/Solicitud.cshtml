@@ -13,7 +13,7 @@
      
 
         <div class="d-flex justify-content-between mb-3">
-            <h4>Solicitud Nro.: @Html.DisplayFor(model => model.CodigoDeSolicitud)</h4>
+    <h4><strong>Solicitud Nro.:</strong> <i class="zmdi zmdi-calendar">@Html.DisplayFor(model => model.CodigoDeSolicitud)</i> </h4>
             <button class="btn btn-outline-primary" onclick="location.href='@Url.Action("SubirArchivo","Archivos", new { ProcessId = Model.CodigoDeSolicitud })'">Agregar Información</button>
         </div>
 
@@ -32,8 +32,10 @@
                 <!-- Datos Generales -->
                 <div class="col-md-8">
                     <div class="card-custom mb-4">
-                        <h6 class="mb-3">Datos Generales</h6>
-                        <div class="row mb-3">
+                          <h5 class="mb-3">
+                            <strong>Datos Generales</strong>
+                          </h5>
+                         <div class="row mb-3">
                             <div class="col-md-6 mb-3">
                                 <label class="label-muted">Código De Solicitud Chen Chen</label>
                                 <div class="info-box" style="min-height: 40px"><spam>@Html.DisplayFor(model => model.CodigoDeSolicitud)</spam></div>
@@ -59,14 +61,16 @@
                     <!-- Datos De Contacto -->
                     <div class="card-custom mb-4">
 
-                       <h6 class="mb-3">Datos De Contacto</h6>
+                        <h5 class="mb-3">
+                            <strong>Datos De Contacto</strong>
+                        </h5>
                        <div class="row mb-3">
                             <div class="col-md-6 mb-3">
-                                <label class="label-muted">Tipo de identificación</label>
+                                <label class="label-muted">Nombre</label>
                                 <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Nombre)</div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="label-muted">Número de identificación</label>
+                                <label class="label-muted">Apellido</label>
                                 <div class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.Apellido)</div>
                              </div>
                        </div>
@@ -95,8 +99,9 @@
                
                     <!-- Datos De Contacto -->
                     <div class="card-custom mb-4">
-
-                        <h6 class="mb-3">Datos del Negocio</h6>
+                        <h5 class="mb-3">
+                            <strong>Datos del Negocio</strong>
+                        </h5> 
                         <div class="row mb-3">
                             <div class="col-md-6 mb-3">
                                 <label class="label-muted">Nombre del Negocio</label>
@@ -184,8 +189,9 @@
                     
 
                     <div class="card-custom mb-4">
-                        <h6 class="mb-3">Detalles de la solicitud</h6>
-
+                        <h5 class="mb-3">
+                            <strong>Detalles de la solicitud</strong>
+                        </h5> 
                         <div class="row mb-3">
                             <label class="label-muted">¿Cuanto Chenchen necesitas?</label>
                             <div id="QuantityToInvert" class="info-box" style="min-height: 40px">@Html.DisplayFor(model => model.CuantoChenchenNecesitas)</div>
@@ -289,29 +295,27 @@
                 <div class="col-md-4">
                     <div class="card-custom">
                         <div class="mb-2">
-                            <strong>No. solicitud:</strong> @Html.DisplayFor(model => model.CodigoDeSolicitud)
+                    <strong>No. solicitud:</strong><br>
+                             <a style="font-size: 14px;">@Html.DisplayFor(model => model.CodigoDeSolicitud)</a>
                         </div>
                         <div class="mb-2">
-                            <strong>Tipo de solicitud:</strong><br> @Html.DisplayFor(model => model.Gestor)
+                            <strong>Tipo de solicitud:</strong> <br>
+                             <a style="font-size: 14px;">@Html.DisplayFor(model => model.Gestor)</a>
                         </div>
                         <div class="mb-2">
-                            <strong>Fecha creación:</strong><br> @Html.DisplayFor(model => model.FechaDeCreacion)
+                            <strong>Fecha creación:</strong><br>
+                    <a style="font-size: 14px;">@Html.DisplayFor(model => model.FechaDeCreacion)</a>
                         </div> 
                         <div class="mb-2">
                             <strong>Duración:</strong><br>  @Html.DisplayFor(model => model.TiempoTranscurrido)
-                        </div>
+                        </div> 
+
                         <div class="form-group mb-3">
-                           <strong for="usuarioAsignadoSelect">Asignar usuario</strong>
+                            <label for="usuarioAsignadoSelect"><strong>Asignar usuario</strong></label>
                             <select id="usuarioAsignadoSelect"
-                                    class="form-select form-select-sm"
-                                    aria-label="Seleccionar usuario asignado"
-                            @(puedeEditar ? "" : "disabled")>
-                                @foreach (var user in ViewBag.Usuarios)
-                                {
-                                    <option value="@user.UserName" @(user.UserName == Model.UsuarioAsignado ? "selected" : "")>
-                                        @user.UserName
-                                    </option>
-                                }
+                                class="form-select form-select-sm scrollable-select"
+                                aria-label="Seleccionar usuario asignado"
+                                @(puedeEditar ? "" : "disabled")>
                             </select>
                         </div>
 

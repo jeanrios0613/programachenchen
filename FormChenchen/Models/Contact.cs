@@ -14,21 +14,21 @@ public partial class Contact
 
     [Required(ErrorMessage = "Este campo es obligatorio")]
     [EmailAddress(ErrorMessage = "El formato del correo electrónico no es válido")]
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; }
 
     [NotMapped]
-    [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "El nombre solo puede contener letras.")]
-    [StringLength(100, MinimumLength = 2, ErrorMessage = "El nombre debe tener entre 2 y 100 caracteres")]
     [Required(ErrorMessage = "Este campo es obligatorio")]
+    [RegularExpression(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,100}$",
+        ErrorMessage = "El Nombre solo puede contener letras y espacios (2-100 caracteres).")]
     public string? Nombre { get; set; }
 
 
     [NotMapped]
-    [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "El Apellido solo puede contener letras.")]
-    [StringLength(100, MinimumLength = 2, ErrorMessage = "El Apellido debe tener entre 2 y 100 caracteres")]
     [Required(ErrorMessage = "Este campo es obligatorio")]
+    [RegularExpression(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{2,100}$",
+        ErrorMessage = "El Apellido solo puede contener letras y espacios (2-100 caracteres).")]
     public string? Apellido { get; set; }
-
+  
     
     [Required(ErrorMessage = "Este campo es obligatorio")]
     public string FullName
@@ -38,10 +38,10 @@ public partial class Contact
     }
 
 
-    [Required(ErrorMessage = "Este campo es obligatorio")]
-    [StringLength(25, MinimumLength = 5, ErrorMessage = "La Identificación no puede ser menor a 5 caracteres")]
-    [RegularExpression(@"^(?:\d-\d{1,3}-\d{1,3}|E-\d{1,3}-\d{1,3}|N-\d{1,3}-\d{1,3}|PE-\d{1,3}-\d{1,3})$",
-         ErrorMessage = "Formato de cédula inválido. Ej: 8-123-456, E-12-345, N-1-234, PE-12-345")]
+    [Required(ErrorMessage = "La identificación es obligatoria.")]
+    [RegularExpression(
+    @"^[A-Za-z0-9-]{5,50}$",
+    ErrorMessage = "El campo debe tener entre 5 y 50 caracteres y solo puede contener letras, números y guiones.")]
     public string IdentificationNumber { get; set; } = null!;
 
 

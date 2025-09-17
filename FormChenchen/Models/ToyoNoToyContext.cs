@@ -15,6 +15,8 @@ public partial class ToyoNoToyContext : DbContext
     {
     }
 
+    public DbSet<EconomicActivity> EconomicActivities { get; set; }
+
     public virtual DbSet<Provincias> Provincias { get; set; }
 
     public virtual DbSet<Distritos> Distritos { get; set; }
@@ -330,6 +332,15 @@ public partial class ToyoNoToyContext : DbContext
                   .HasForeignKey(c => c.district_id)
                   .OnDelete(DeleteBehavior.Cascade);
         });
+
+
+        modelBuilder.Entity<EconomicActivity>(entity =>
+        {
+            entity.ToTable("EconomicActivities");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).HasMaxLength(150).IsRequired();
+
+        } ); 
 
         OnModelCreatingPartial(modelBuilder);
     }

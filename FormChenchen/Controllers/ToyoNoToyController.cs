@@ -110,6 +110,8 @@ namespace elchenchenvuelvecy.Controllers
                 }
 
 
+
+
                 _logger.LogInformation("New request created with Id: {Id}", newRequest.Id);
                 _logger.LogInformation("New request created with Code: {Code}", newRequest.Code);
                 _logger.LogInformation("New request created with CreationDate: {CreationDate}", newRequest.CreationDate);
@@ -129,6 +131,9 @@ namespace elchenchenvuelvecy.Controllers
                 //*****************************************************************//
                 //-----------------------------------------------------------------//
 
+                int corregimiento = int.Parse(Formulario.Enterprise.Corregimiento);
+                int Provincias    = int.Parse(Formulario.Enterprise.Province);
+                int Distritos     = int.Parse(Formulario.Enterprise.District);
 
                 //SE INSERTAN LOS DATOS EN LA TABLA REQUEST_INFO PARA EL VISOR
                 var NewRequestInfo = new RequestInfo
@@ -169,11 +174,20 @@ namespace elchenchenvuelvecy.Controllers
 
                     WebSite = Formulario.Enterprise.WebSite,
 
-                    Provincia = Formulario.Enterprise.Province,
+                    Provincia = _context.Provincias
+                                   .Where(c => c.Id == Provincias)
+                                   .Select(c => c.Name.ToUpper())
+                                   .FirstOrDefault(),
 
-                    Distrito = Formulario.Enterprise.District,
+                    Distrito = _context.Distritos
+                                   .Where(c => c.Id == Distritos)
+                                   .Select(c => c.Name.ToUpper())
+                                   .FirstOrDefault(),
 
-                    Corregimiento = Formulario.Enterprise.Corregimiento,
+                    Corregimiento = _context.Corregimientos
+                                   .Where(c => c.Id == corregimiento)
+                                   .Select(c => c.Name.ToUpper())
+                                   .FirstOrDefault(),
 
                     //ProyeccionVentasMensuales = Convert.ToInt32(Formulario.Enterprise.ProyectedSales).ToString(),
                     ProyeccionVentasMensuales = Formulario.Enterprise.ProyectedSales.ToString(),

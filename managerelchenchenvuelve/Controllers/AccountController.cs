@@ -111,6 +111,7 @@ namespace managerelchenchenvuelve.Controllers
 					HttpContext.Session.SetString("Email" , users[0].Email);
 					HttpContext.Session.SetString("CompaniaUser" , users[0].UserCompania.ToString());
 					HttpContext.Session.SetString("Gestion", users[0].Gestion.ToString());
+                    HttpContext.Session.SetString("IdUser", users[0].id);
 
 				}
 
@@ -201,6 +202,7 @@ namespace managerelchenchenvuelve.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+
         [HttpGet] 
         public IActionResult ChangePassword(string id)
         {
@@ -219,46 +221,78 @@ namespace managerelchenchenvuelve.Controllers
             if (user == null)
                 return NotFound();
 
+
             var roles = _context.Roles.ToList();
-            ViewBag.Roles = roles;
             var userRole = _context.UserRoles.FirstOrDefault(ur => ur.UserId == id);
+
+            ViewBag.Roles = roles;
             ViewBag.CurrentRoleId = userRole?.RoleId;
+            TempData["UserPass"] = user.PasswordHash; 
             return View(user);
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken] 
-        public  IActionResult  ChangePassword(string NewPassword, string ConfirmPassword)
+        [ValidateAntiForgeryToken]
+        public IActionResult ChangePassword(string NewPassword, string ConfirmPassword)
         {
-            if (string.IsNullOrWhiteSpace(NewPassword) || string.IsNullOrWhiteSpace(ConfirmPassword))
-            {
-                ViewData["Mensaje"] = "Todos los campos son requeridos.";
-                return View();
-            }
-
-            if (NewPassword != ConfirmPassword)
-            {
-                ViewData["Mensaje"] = "Las contraseñas no coinciden.";
-                return View();
-            }
-
             try
             {
-                string? username = HttpContext.Session.GetString("UserName");
-                string  encryptedPassword = EncryptPass.Encriptar(NewPassword);
+                // Recupera la contraseña antigua de TempData de forma segura
+                string? passAntigua = TempData["UserPass"] as string;
 
-                string query = "UPDATE Users SET PasswordHash = @NewPasswordHash,IndUpdate = @ValorActuliza, DateUpdate = @DateUpdate  WHERE UserName = @Username";
+                // Validaciones de campos
+                if (string.IsNullOrWhiteSpace(NewPassword) || string.IsNullOrWhiteSpace(ConfirmPassword))
+                {
+                    ViewData["Mensaje"] = "Todos los campos son requeridos.";
+                    return View();
+                }
+
+                if (NewPassword != ConfirmPassword)
+                {
+                    ViewData["Mensaje"] = "Las contraseñas no coinciden.";
+                    return View();
+                }
+
+                _logger.LogInformation("Contraseña antigua: {PassAntigua}", passAntigua);
+
+                // Obtiene el nombre de usuario de la sesión
+                string? username = HttpContext.Session.GetString("UserName");
+                if (string.IsNullOrEmpty(username))
+                {
+                    ViewData["Mensaje"] = "Sesión expirada. Por favor, inicie sesión nuevamente.";
+                    return RedirectToAction("Login", "Account");
+                }
+
+                // Encripta la nueva contraseña
+                string encryptedPassword = EncryptPass.Encriptar(NewPassword);
+                _logger.LogInformation("Contraseña nueva encriptada: {EncryptedPassword}", encryptedPassword);
+
+                // Validación para evitar repetir la contraseña anterior
+                if (passAntigua == encryptedPassword)
+                {
+                    ViewData["Mensaje"] = "La nueva contraseña no puede ser igual a la anterior.";
+                    return View();
+                }
+
+                // Construye la consulta segura con parámetros
+                string query = @"UPDATE Users 
+                         SET PasswordHash = @NewPasswordHash,
+                             IndUpdate = @ValorActualiza,
+                             DateUpdate = @DateUpdate
+                         WHERE UserName = @Username";
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@NewPasswordHash",encryptedPassword),
-                    new SqlParameter("@ValorActuliza",false),
-                    new SqlParameter("@DateUpdate", DateTimeOffset.UtcNow.AddMonths(3)),
-                    new SqlParameter("@Username", username)
+                new SqlParameter("@NewPasswordHash", encryptedPassword),
+                new SqlParameter("@ValorActualiza", false),
+                new SqlParameter("@DateUpdate", DateTime.UtcNow.AddMonths(3)),
+                new SqlParameter("@Username", username)
                 };
 
+                // Ejecuta la actualización
                 _db.ExecuteNonQuery(query, parameters);
-                
+
                 ViewData["Mensaje"] = "Contraseña actualizada exitosamente.";
                 _logger.LogInformation("Contraseña actualizada para el usuario: {Username}", username);
             }
@@ -268,7 +302,11 @@ namespace managerelchenchenvuelve.Controllers
                 ViewData["Mensaje"] = "Error al cambiar la contraseña. Por favor, intente nuevamente.";
             }
 
+            // Redirige al Index del proceso
             return RedirectToAction("Index", "Process");
         }
+
+
+
     }
 }

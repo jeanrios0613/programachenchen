@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "ContainingType": "ServicesApiController",
+    "Method": "GetUsers",
+    "RelativePath": "api/ServicesApi/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

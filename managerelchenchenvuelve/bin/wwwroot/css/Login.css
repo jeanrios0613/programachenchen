@@ -35,11 +35,11 @@ body {
     text-align: center;
     color: #fff;
 }
-
-img {
-    width: 150px; 
-    height: 100px;
-}
+ 
+ .logo-img
+{
+    width: 250px;   
+} 
 
 h2 {
     color: #333;
